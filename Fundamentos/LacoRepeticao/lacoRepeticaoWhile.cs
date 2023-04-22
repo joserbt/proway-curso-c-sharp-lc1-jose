@@ -62,19 +62,21 @@ namespace Fundamentos.LacoRepeticao
         public void Exemplo02()
         {
             int indice = 0;
-            while(indice < 3)
-            //input
-            Console.WriteLine("Nome: ");
-            string nome = Console.ReadLine().Trim();
-            Console.WriteLine("sobrenome: ");
-            string sobrenome = Console.ReadLine().Trim();
-            
-            //processamento
-            string nomeCompleto = nome + "" + sobrenome;
+            while (indice < 3)
+            {
+                //input
+                Console.Write("Nome: ");
+                string nome = Console.ReadLine().Trim();
+                Console.Write("sobrenome: ");
+                string sobrenome = Console.ReadLine().Trim();
 
-            //output
-            Console.WriteLine("nome completo: " + nomeCompleto);
-            indice = indice + 1;
+                //processamento
+                string nomeCompleto = nome + " " + sobrenome;
+
+                //output
+                Console.WriteLine("nome completo: " + nomeCompleto);
+                indice = indice + 1;
+            }
 
         }
         /// <summary>

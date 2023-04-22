@@ -21,5 +21,8 @@ using Fundamentos.LacoRepeticao;
 //EstruturaCondicionalAvancada executor = new EstruturaCondicionalAvancada();
 //executor.Executar();
 
-lacoRepeticaoWhile executor = new lacoRepeticaoWhile();
+//lacoRepeticaoWhile executor = new lacoRepeticaoWhile();
+//executor.Executar();
+
+lacoRepeticaoFor executor = new lacoRepeticaoFor();
 executor.Executar();
