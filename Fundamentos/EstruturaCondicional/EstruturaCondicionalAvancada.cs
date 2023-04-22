@@ -25,12 +25,12 @@ namespace Fundamentos.EstruturaCondicional
             {
                 recebeAuxilioEducacao = true;
             }
-            Console.Write("Recebe auxilio passe? S ou N: ");
+            Console.Write("Recebe auxilio passe? [S/N]: ");
             string recebeAuxilioPasseTexto = Console.ReadLine().ToUpper().Trim();
             bool recebeValeTransporte = false;
             if (recebeAuxilioPasseTexto == "S")
                 recebeValeTransporte = true;
-            Console.Write("Filhos menores de 5 anos? S ou N: ");
+            Console.Write("Filhos menores de 5 anos? [S/N]: ");
             // Operador ternário é um IF com retorno de valor
             // Ex.: string classificacao = idade < 8 ? "Menor" : "Maior";
             bool recebeAuxilioCreche =
