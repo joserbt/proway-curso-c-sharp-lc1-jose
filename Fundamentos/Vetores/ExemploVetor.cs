@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,7 +11,7 @@ namespace Fundamentos.Vetores
     {
         public void Executar()
         {
-            ExemplosNomes();
+            ExemploProdutos();
         }
          private void ExemplosNomes()
         {
@@ -22,6 +23,69 @@ namespace Fundamentos.Vetores
             Console.WriteLine(nomes[1]);
             Console.WriteLine(nomes[2]);
 
+        }
+
+        private void Numeros()
+        {
+            //Numeros().Length: é o tamanho do vetor
+            int [] numeros = new int[6];
+            numeros[0] = 30;
+            numeros[1] = 21;
+            numeros[2] = 29;
+            numeros[3] = 27;
+            numeros[4] = 52;
+            numeros[5] = 10;
+
+            int soma = numeros[0] + numeros[1] + numeros[2] + numeros[3] + numeros[4] + numeros[5];
+            Console.WriteLine("soma: " + soma);
+            Console.WriteLine("média: " + soma / numeros.Length);
+        }
+        private void ExemploProdutos()
+        {
+            string[] nomes = new string[3];
+            double[] precosUnitarios = new double[3];
+            int[] quantidades = new int[3];
+            double[] totalProdutos = new double[3];
+            
+            //input
+            Console.Write("produto: ");
+            nomes[0] = Console.ReadLine().Trim();
+            Console.Write("preço unitario; ");
+            precosUnitarios[0] = Convert.ToDouble(Console.ReadLine());
+            Console.Write("quantidade: ");
+            quantidades[0] = Convert.ToInt32(Console.ReadLine());
+            
+            //processamento
+            totalProdutos[0] = precosUnitarios[0] * quantidades[0];
+            Console.WriteLine("preço do produto: " + totalProdutos[0]);
+
+            //input
+            Console.Write("produto: ");
+            nomes[1] = Console.ReadLine().Trim();
+            Console.Write("preço unitario; ");
+            precosUnitarios[1] = Convert.ToDouble(Console.ReadLine());
+            Console.Write("quantidade: ");
+            quantidades[1] = Convert.ToInt32(Console.ReadLine());
+
+            //processamento
+            totalProdutos[1] = precosUnitarios[1] * quantidades[1];
+            Console.WriteLine("preço do produto: " + totalProdutos[1]);
+
+            //input
+            Console.Write("produto: ");
+            nomes[2] = Console.ReadLine().Trim();
+            Console.Write("preço unitario; ");
+            precosUnitarios[2] = Convert.ToDouble(Console.ReadLine());
+            Console.Write("quantidade: ");
+            quantidades[2] = Convert.ToInt32(Console.ReadLine());
+
+            //processamento
+            totalProdutos[2] = precosUnitarios[2] * quantidades[2];
+            Console.WriteLine("preço do produto: " + totalProdutos[2]);
+
+            //output
+            double precoTotal = (totalProdutos[0] + totalProdutos[1] + totalProdutos[2]);
+            Console.WriteLine("total a pagar: "+ precoTotal);
         }
     }
 }
