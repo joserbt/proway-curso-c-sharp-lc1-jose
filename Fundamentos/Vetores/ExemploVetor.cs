@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Fundamentos.Vetores
 {
@@ -11,7 +12,7 @@ namespace Fundamentos.Vetores
     {
         public void Executar()
         {
-            ExemploProdutos();
+            Exercicio();
         }
          private void ExemplosNomes()
         {
@@ -40,6 +41,7 @@ namespace Fundamentos.Vetores
             Console.WriteLine("soma: " + soma);
             Console.WriteLine("média: " + soma / numeros.Length);
         }
+
         private void ExemploProdutos()
         {
             string[] nomes = new string[3];
@@ -87,5 +89,50 @@ namespace Fundamentos.Vetores
             double precoTotal = (totalProdutos[0] + totalProdutos[1] + totalProdutos[2]);
             Console.WriteLine("total a pagar: "+ precoTotal);
         }
+        
+        private void Exercicio()
+        {
+            //peso / altura *2
+            string[] nome = new string[3];
+            double[] altura = new double[3];
+            double[] peso = new double[3];
+            double[] calcularImc = new double[3];
+
+            Console.Write("nome: ");
+            nome[0] = Console.ReadLine();
+            Console.Write("peso: ");
+            peso[0] = Convert.ToDouble(Console.ReadLine());
+            Console.Write("altura: ");
+            altura[0] = Convert.ToDouble(Console.ReadLine());
+
+            calcularImc[0] = (peso[0] / altura[0]) * 2;
+            Console.WriteLine("imc: " + calcularImc[0]);
+
+            Console.WriteLine("==================");
+
+            Console.Write("nome: ");
+            nome[1] = Console.ReadLine();
+            Console.Write("peso: ");
+            peso[1] = Convert.ToDouble(Console.ReadLine());
+            Console.Write("altura: ");
+            altura[1] = Convert.ToDouble(Console.ReadLine());
+
+            calcularImc[1] = (peso[1] / altura[1]) * 2;
+            Console.WriteLine("imc: " + calcularImc[1]);
+
+            Console.WriteLine("==================");
+
+            Console.Write("nome: ");
+            nome[2] = Console.ReadLine();
+            Console.Write("peso: ");
+            peso[2] = Convert.ToDouble(Console.ReadLine());
+            Console.Write("altura: ");
+            altura[2] = Convert.ToDouble(Console.ReadLine());
+
+            calcularImc[2] = (peso[2] / altura[2]) * 2;
+            Console.WriteLine("imc: " + calcularImc[2]);
+
+            Console.WriteLine("==================");
+        }
     }
-}
+}   
