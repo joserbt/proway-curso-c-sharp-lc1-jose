@@ -2,6 +2,7 @@
 using Fundamentos.EntradaDados;
 using Fundamentos.EstruturaCondicional;
 using Fundamentos.LacoRepeticao;
+using Fundamentos.Vetores;
 
 //ApresentarDados01 executor = new ApresentarDados01();
 //executor.Executar();
@@ -24,5 +25,8 @@ using Fundamentos.LacoRepeticao;
 //lacoRepeticaoWhile executor = new lacoRepeticaoWhile();
 //executor.Executar();
 
-lacoRepeticaoFor executor = new lacoRepeticaoFor();
+//lacoRepeticaoFor executor = new lacoRepeticaoFor();
+//executor.Executar();
+
+ExemploVetor executor = new ExemploVetor();
 executor.Executar();
