@@ -2,6 +2,7 @@
 using Fundamentos.EntradaDados;
 using Fundamentos.EstruturaCondicional;
 using Fundamentos.LacoRepeticao;
+using Fundamentos.OriantaçãoObjetos;
 using Fundamentos.vertorComFor;
 using Fundamentos.Vetores;
 
@@ -32,5 +33,11 @@ using Fundamentos.Vetores;
 //ExemploVetor executor = new ExemploVetor();
 //executor.Executar();
 
-ExemploVetorComFor executor= new ExemploVetorComFor();
-executor.Executar();
+//ExemploVetorComFor executor= new ExemploVetorComFor();
+//executor.Executar();
+
+//Loja executor = new Loja();
+//executor.Executar();
+
+ListaColaboradoresInterativa executor = new ListaColaboradoresInterativa();
+executor.CalcularFolhasDePagamento();
