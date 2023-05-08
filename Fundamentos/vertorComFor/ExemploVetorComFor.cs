@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace Fundamentos.vertorComFor
@@ -68,7 +69,9 @@ namespace Fundamentos.vertorComFor
             Console.WriteLine($"soma: {soma} \nmédia: {media}"); //interpolação de string
             Console.WriteLine("maior numero: " + maiorNumero);
             Console.WriteLine("menor numero: " + menorNumero);
+            Console.WriteLine("jose o mais lindo);
         }
         //for(declaração;condição;incr)
+        
     }
 }

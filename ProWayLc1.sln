@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fundamentos", "Fundamentos\Fundamentos.csproj", "{68931A92-0A58-4EF1-96BE-45042D284856}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsExemplos", "WindowsFormsExemplos\WindowsFormsExemplos.csproj", "{0224EF4B-2E31-4F25-88AB-307D4BF9EFA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsFormsExemplos", "WindowsFormsExemplos\WindowsFormsExemplos.csproj", "{0224EF4B-2E31-4F25-88AB-307D4BF9EFA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
