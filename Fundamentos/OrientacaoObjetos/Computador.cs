@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fundamentos.OriantaçãoObjetos
+namespace Fundamentos.OrientacaoObjetos
 {
     internal class Computador
     {
-        public String Processador;
-        public String PlacaDeVideo;
+        // Propriedades
+        public string Processador;
+        public string PlacaVideo;
         public double Preco;
-
+        public IList<string> Nomes;
     }
 }

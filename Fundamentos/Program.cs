@@ -2,9 +2,9 @@
 using Fundamentos.EntradaDados;
 using Fundamentos.EstruturaCondicional;
 using Fundamentos.LacoRepeticao;
-using Fundamentos.OriantaçãoObjetos;
-using Fundamentos.vertorComFor;
+using Fundamentos.VetorComFor;
 using Fundamentos.Vetores;
+using Fundamentos.OrientacaoObjetos;
 
 //ApresentarDados01 executor = new ApresentarDados01();
 //executor.Executar();
@@ -24,20 +24,14 @@ using Fundamentos.Vetores;
 //EstruturaCondicionalAvancada executor = new EstruturaCondicionalAvancada();
 //executor.Executar();
 
-//lacoRepeticaoWhile executor = new lacoRepeticaoWhile();
+//LacoRepeticaoWhile executor = new LacoRepeticaoWhile();
 //executor.Executar();
 
-//lacoRepeticaoFor executor = new lacoRepeticaoFor();
+//ExemploVetorComFor executor = new ExemploVetorComFor();
 //executor.Executar();
 
-//ExemploVetor executor = new ExemploVetor();
-//executor.Executar();
+//Loja executar = new Loja();
+//executar.Executar();
 
-//ExemploVetorComFor executor= new ExemploVetorComFor();
-//executor.Executar();
-
-//Loja executor = new Loja();
-//executor.Executar();
-
-ListaColaboradoresInterativa executor = new ListaColaboradoresInterativa();
-executor.CalcularFolhasDePagamento();
+ListaColaboradores executar = new ListaColaboradores();
+executar.CalcularFolhasPagamento();

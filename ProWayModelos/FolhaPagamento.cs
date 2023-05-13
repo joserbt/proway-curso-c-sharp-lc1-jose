@@ -1,8 +1,8 @@
-﻿namespace WindowsFormsExemplos
+﻿namespace ProWayModelos
 {
-    internal class FolhaPagamento
+    public class FolhaPagamento
     {
-        //propriedades
+        // Propriedades
         public string NomeColaborador;
         public double ValorHora;
         public int QuantidadeHoras;
@@ -10,8 +10,9 @@
         private const double AliquotaInss14Porcento = 0.14;
         private const double AliquotaInss12Porcento = 0.12;
         private const double AliquotaInss9Porcento = 0.09;
-        private const double AliquotaInss7meioPorcento = 0.075;
+        private const double AliquotaInss7MeioPorcento = 0.075;
 
+        // Método com retorno sem parâmetros
         public double CalcularSalarioBruto()
         {
             double salarioBruto = ValorHora * QuantidadeHoras;
@@ -24,22 +25,24 @@
             double salarioBruto = CalcularSalarioBruto();
             double aliquota = ObterAliquota(salarioBruto);
 
+            //double inss = salarioBruto * aliquota;
+            //return inss;
             return salarioBruto * aliquota;
         }
 
         private double ObterAliquota(double salarioBruto)
         {
-            if (salarioBruto <= 1320)
+            if (salarioBruto <= 1_320.00)
             {
-                return AliquotaInss7meioPorcento;
+                return AliquotaInss7MeioPorcento;
             }
 
-            if (salarioBruto <= 2571)
+            if (salarioBruto <= 2_571.29)
             {
                 return AliquotaInss9Porcento;
             }
 
-            if (salarioBruto <= 3856)
+            if (salarioBruto <= 3_856.94)
             {
                 return AliquotaInss12Porcento;
             }

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace Fundamentos.Vetores
 {
@@ -12,24 +10,29 @@ namespace Fundamentos.Vetores
     {
         public void Executar()
         {
-            Exercicio();
+            ExemploProdutos();
         }
-         private void ExemplosNomes()
+
+        private void ExemplosNomes()
         {
             string[] nomes = new string[3];
             nomes[0] = "Lucas";
             nomes[1] = "Ana";
-            nomes[2] = "fabricio";
+            nomes[2] = "Fabrííiicío";
+
+            // Trocando o valor contido na primeira posição do vetor de nomes
+            // Concatenando o sobrenome da Silva na primeira posição
+            nomes[0] = nomes[0] + " da Silva";
+
+
             Console.WriteLine(nomes[0]);
             Console.WriteLine(nomes[1]);
             Console.WriteLine(nomes[2]);
-
         }
 
-        private void Numeros()
+        private void ExemploNumeros()
         {
-            //Numeros().Length: é o tamanho do vetor
-            int [] numeros = new int[6];
+            int[] numeros = new int[6];
             numeros[0] = 30;
             numeros[1] = 21;
             numeros[2] = 29;
@@ -37,102 +40,73 @@ namespace Fundamentos.Vetores
             numeros[4] = 52;
             numeros[5] = 10;
 
-            int soma = numeros[0] + numeros[1] + numeros[2] + numeros[3] + numeros[4] + numeros[5];
-            Console.WriteLine("soma: " + soma);
-            Console.WriteLine("média: " + soma / numeros.Length);
+            // numeros.Length : é o tamanho do vetor
+            
+            int soma = numeros[0] + numeros[1] + numeros[2] + numeros[3] + 
+                numeros[4] + numeros[5];
+            Console.WriteLine("Soma: " + soma);
+            Console.WriteLine("Média: " + soma / numeros.Length);
         }
 
         private void ExemploProdutos()
         {
+            // nome, preço unitário e quantidade, calcular e apresentar
+            // solicitar estes dados para 3 produtos
             string[] nomes = new string[3];
             double[] precosUnitarios = new double[3];
             int[] quantidades = new int[3];
             double[] totalProdutos = new double[3];
-            
-            //input
-            Console.Write("produto: ");
-            nomes[0] = Console.ReadLine().Trim();
-            Console.Write("preço unitario; ");
-            precosUnitarios[0] = Convert.ToDouble(Console.ReadLine());
-            Console.Write("quantidade: ");
-            quantidades[0] = Convert.ToInt32(Console.ReadLine());
-            
-            //processamento
-            totalProdutos[0] = precosUnitarios[0] * quantidades[0];
-            Console.WriteLine("preço do produto: " + totalProdutos[0]);
 
-            //input
-            Console.Write("produto: ");
+            // Input
+            Console.Write("Produto: ");
+            nomes[0] = Console.ReadLine().Trim();
+            Console.Write("Preço Unitário: ");
+            precosUnitarios[0] = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Quantidade: ");
+            quantidades[0] = Convert.ToInt32(Console.ReadLine());
+
+            // Processamento
+            totalProdutos[0] = precosUnitarios[0] * quantidades[0];
+            
+            // Output
+            Console.WriteLine("Preço do produto 1: " + totalProdutos[0]);
+
+            // Input
+            Console.Write("Produto: ");
             nomes[1] = Console.ReadLine().Trim();
-            Console.Write("preço unitario; ");
+            Console.Write("Preço Unitário: ");
             precosUnitarios[1] = Convert.ToDouble(Console.ReadLine());
-            Console.Write("quantidade: ");
+            Console.Write("Quantidade: ");
             quantidades[1] = Convert.ToInt32(Console.ReadLine());
 
-            //processamento
+            // Processamento
             totalProdutos[1] = precosUnitarios[1] * quantidades[1];
-            Console.WriteLine("preço do produto: " + totalProdutos[1]);
+            
+            // Output
+            Console.WriteLine("Preço do produto 2: " + totalProdutos[1]);
 
-            //input
-            Console.Write("produto: ");
+            // Input
+            Console.Write("Produto: ");
             nomes[2] = Console.ReadLine().Trim();
-            Console.Write("preço unitario; ");
+            Console.Write("Preço Unitário: ");
             precosUnitarios[2] = Convert.ToDouble(Console.ReadLine());
-            Console.Write("quantidade: ");
+            Console.Write("Quantidade: ");
             quantidades[2] = Convert.ToInt32(Console.ReadLine());
 
-            //processamento
+            // Processamento
             totalProdutos[2] = precosUnitarios[2] * quantidades[2];
-            Console.WriteLine("preço do produto: " + totalProdutos[2]);
+            // Output
+            Console.WriteLine("Preço do produto 3: " + totalProdutos[2]);
 
-            //output
-            double precoTotal = (totalProdutos[0] + totalProdutos[1] + totalProdutos[2]);
-            Console.WriteLine("total a pagar: "+ precoTotal);
+            // Processamento
+            double total = totalProdutos[0] + totalProdutos[1] + totalProdutos[2];
+            
+            // Output
+            Console.WriteLine("Total: " + total);
         }
-        
-        private void Exercicio()
-        {
-            //peso / altura *2
-            string[] nome = new string[3];
-            double[] altura = new double[3];
-            double[] peso = new double[3];
-            double[] calcularImc = new double[3];
 
-            Console.Write("nome: ");
-            nome[0] = Console.ReadLine();
-            Console.Write("peso: ");
-            peso[0] = Convert.ToDouble(Console.ReadLine());
-            Console.Write("altura: ");
-            altura[0] = Convert.ToDouble(Console.ReadLine());
-
-            calcularImc[0] = (peso[0] / altura[0]) * 2;
-            Console.WriteLine("imc: " + calcularImc[0]);
-
-            Console.WriteLine("==================");
-
-            Console.Write("nome: ");
-            nome[1] = Console.ReadLine();
-            Console.Write("peso: ");
-            peso[1] = Convert.ToDouble(Console.ReadLine());
-            Console.Write("altura: ");
-            altura[1] = Convert.ToDouble(Console.ReadLine());
-
-            calcularImc[1] = (peso[1] / altura[1]) * 2;
-            Console.WriteLine("imc: " + calcularImc[1]);
-
-            Console.WriteLine("==================");
-
-            Console.Write("nome: ");
-            nome[2] = Console.ReadLine();
-            Console.Write("peso: ");
-            peso[2] = Convert.ToDouble(Console.ReadLine());
-            Console.Write("altura: ");
-            altura[2] = Convert.ToDouble(Console.ReadLine());
-
-            calcularImc[2] = (peso[2] / altura[2]) * 2;
-            Console.WriteLine("imc: " + calcularImc[2]);
-
-            Console.WriteLine("==================");
-        }
+        // Exercício
+        // Solicitar nome, altura e peso de 3 pessoas
+        // Calcular o imc de cada pessoa e apresentar
     }
-}   
+}

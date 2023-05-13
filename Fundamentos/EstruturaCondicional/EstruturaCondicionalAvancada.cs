@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Fundamentos.EstruturaCondicional
 {
@@ -7,7 +8,7 @@ namespace Fundamentos.EstruturaCondicional
         public void Executar()
         {
             // INPUTS
-            // byte 0..255, short 32768..32767, int -2bi..2bi e long
+            // byte 0..255, short -32768..32767, int -2bi..2bi e long
             // byte Convert.ToByte
             // short Convert.ToInt16
             // int Convert.ToInt32
@@ -18,7 +19,7 @@ namespace Fundamentos.EstruturaCondicional
             byte quantidadeHorasTrabalhadas = Convert.ToByte(Console.ReadLine());
             Console.Write("Valor hora: ");
             double valorHora = Convert.ToDouble(Console.ReadLine()); // 235.94
-            Console.Write("Recebe vale educação? S ou N: ");
+            Console.Write("Recebe vale educação? [S/N]: ");
             string recebeAuxilioEducacaoTexto = Console.ReadLine().Trim().ToLower();
             bool recebeAuxilioEducacao = false;
             if (recebeAuxilioEducacaoTexto == "s")

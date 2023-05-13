@@ -30,18 +30,18 @@
         {
             this.labelNome = new System.Windows.Forms.Label();
             this.textBoxNome = new System.Windows.Forms.TextBox();
-            this.labelQuantidadeDeHorasTRabalhadas = new System.Windows.Forms.Label();
-            this.textBoxQuantidadeHorasTrabalhadas = new System.Windows.Forms.TextBox();
+            this.labelQuantidadeHoras = new System.Windows.Forms.Label();
+            this.textBoxQuantidadeHoras = new System.Windows.Forms.TextBox();
             this.labelValorHora = new System.Windows.Forms.Label();
             this.textBoxValorHora = new System.Windows.Forms.TextBox();
-            this.labelCifrao = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelNome
             // 
             this.labelNome.AutoSize = true;
-            this.labelNome.Location = new System.Drawing.Point(12, 10);
+            this.labelNome.Location = new System.Drawing.Point(38, 19);
+            this.labelNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(50, 20);
             this.labelNome.TabIndex = 0;
@@ -49,60 +49,56 @@
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(12, 33);
+            this.textBoxNome.Location = new System.Drawing.Point(91, 19);
+            this.textBoxNome.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textBoxNome.Name = "textBoxNome";
-            this.textBoxNome.Size = new System.Drawing.Size(278, 27);
+            this.textBoxNome.Size = new System.Drawing.Size(356, 27);
             this.textBoxNome.TabIndex = 1;
             // 
-            // labelQuantidadeDeHorasTRabalhadas
+            // labelQuantidadeHoras
             // 
-            this.labelQuantidadeDeHorasTRabalhadas.AutoSize = true;
-            this.labelQuantidadeDeHorasTRabalhadas.Location = new System.Drawing.Point(12, 63);
-            this.labelQuantidadeDeHorasTRabalhadas.Name = "labelQuantidadeDeHorasTRabalhadas";
-            this.labelQuantidadeDeHorasTRabalhadas.Size = new System.Drawing.Size(230, 20);
-            this.labelQuantidadeDeHorasTRabalhadas.TabIndex = 2;
-            this.labelQuantidadeDeHorasTRabalhadas.Text = "Quantidade de horas trabalhadas";
-            this.labelQuantidadeDeHorasTRabalhadas.Click += new System.EventHandler(this.label2_Click);
+            this.labelQuantidadeHoras.AutoSize = true;
+            this.labelQuantidadeHoras.Location = new System.Drawing.Point(38, 61);
+            this.labelQuantidadeHoras.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.labelQuantidadeHoras.Name = "labelQuantidadeHoras";
+            this.labelQuantidadeHoras.Size = new System.Drawing.Size(151, 20);
+            this.labelQuantidadeHoras.TabIndex = 2;
+            this.labelQuantidadeHoras.Text = "Quantidade de Horas";
             // 
-            // textBoxQuantidadeHorasTrabalhadas
+            // textBoxQuantidadeHoras
             // 
-            this.textBoxQuantidadeHorasTrabalhadas.Location = new System.Drawing.Point(12, 86);
-            this.textBoxQuantidadeHorasTrabalhadas.Name = "textBoxQuantidadeHorasTrabalhadas";
-            this.textBoxQuantidadeHorasTrabalhadas.Size = new System.Drawing.Size(278, 27);
-            this.textBoxQuantidadeHorasTrabalhadas.TabIndex = 3;
+            this.textBoxQuantidadeHoras.Location = new System.Drawing.Point(198, 61);
+            this.textBoxQuantidadeHoras.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.textBoxQuantidadeHoras.Name = "textBoxQuantidadeHoras";
+            this.textBoxQuantidadeHoras.Size = new System.Drawing.Size(250, 27);
+            this.textBoxQuantidadeHoras.TabIndex = 3;
             // 
             // labelValorHora
             // 
             this.labelValorHora.AutoSize = true;
-            this.labelValorHora.Location = new System.Drawing.Point(12, 116);
+            this.labelValorHora.Location = new System.Drawing.Point(38, 109);
+            this.labelValorHora.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelValorHora.Name = "labelValorHora";
-            this.labelValorHora.Size = new System.Drawing.Size(76, 20);
+            this.labelValorHora.Size = new System.Drawing.Size(80, 20);
             this.labelValorHora.TabIndex = 4;
-            this.labelValorHora.Text = "valor hora";
+            this.labelValorHora.Text = "Valor Hora";
             // 
             // textBoxValorHora
             // 
-            this.textBoxValorHora.Location = new System.Drawing.Point(44, 139);
+            this.textBoxValorHora.Location = new System.Drawing.Point(119, 109);
+            this.textBoxValorHora.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.textBoxValorHora.Name = "textBoxValorHora";
-            this.textBoxValorHora.Size = new System.Drawing.Size(246, 27);
+            this.textBoxValorHora.Size = new System.Drawing.Size(329, 27);
             this.textBoxValorHora.TabIndex = 5;
-            // 
-            // labelCifrao
-            // 
-            this.labelCifrao.AutoSize = true;
-            this.labelCifrao.Location = new System.Drawing.Point(12, 142);
-            this.labelCifrao.Name = "labelCifrao";
-            this.labelCifrao.Size = new System.Drawing.Size(26, 20);
-            this.labelCifrao.TabIndex = 6;
-            this.labelCifrao.Text = "R$";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 181);
+            this.button1.Location = new System.Drawing.Point(9, 152);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(278, 29);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "calcular salario";
+            this.button1.Size = new System.Drawing.Size(437, 199);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Calcular Salário";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -110,17 +106,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(313, 248);
+            this.ClientSize = new System.Drawing.Size(463, 375);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.labelCifrao);
             this.Controls.Add(this.textBoxValorHora);
             this.Controls.Add(this.labelValorHora);
-            this.Controls.Add(this.textBoxQuantidadeHorasTrabalhadas);
-            this.Controls.Add(this.labelQuantidadeDeHorasTRabalhadas);
+            this.Controls.Add(this.textBoxQuantidadeHoras);
+            this.Controls.Add(this.labelQuantidadeHoras);
             this.Controls.Add(this.textBoxNome);
             this.Controls.Add(this.labelNome);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Calcular folha de pagamento";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,11 +127,10 @@
 
         private Label labelNome;
         private TextBox textBoxNome;
-        private Label labelQuantidadeDeHorasTRabalhadas;
-        private TextBox textBoxQuantidadeHorasTrabalhadas;
+        private Label labelQuantidadeHoras;
+        private TextBox textBoxQuantidadeHoras;
         private Label labelValorHora;
         private TextBox textBoxValorHora;
-        private Label labelCifrao;
         private Button button1;
     }
 }
