@@ -41,13 +41,15 @@
             this.ColumnQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnPreco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonEditar = new System.Windows.Forms.Button();
+            this.buttonApagar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // labelNome
             // 
             this.labelNome.AutoSize = true;
-            this.labelNome.Location = new System.Drawing.Point(441, 63);
+            this.labelNome.Location = new System.Drawing.Point(615, 64);
             this.labelNome.Name = "labelNome";
             this.labelNome.Size = new System.Drawing.Size(50, 20);
             this.labelNome.TabIndex = 0;
@@ -56,7 +58,7 @@
             // labelQuantidade
             // 
             this.labelQuantidade.AutoSize = true;
-            this.labelQuantidade.Location = new System.Drawing.Point(441, 140);
+            this.labelQuantidade.Location = new System.Drawing.Point(615, 141);
             this.labelQuantidade.Name = "labelQuantidade";
             this.labelQuantidade.Size = new System.Drawing.Size(87, 20);
             this.labelQuantidade.TabIndex = 1;
@@ -65,7 +67,7 @@
             // labelPrecoUnitario
             // 
             this.labelPrecoUnitario.AutoSize = true;
-            this.labelPrecoUnitario.Location = new System.Drawing.Point(441, 213);
+            this.labelPrecoUnitario.Location = new System.Drawing.Point(615, 214);
             this.labelPrecoUnitario.Name = "labelPrecoUnitario";
             this.labelPrecoUnitario.Size = new System.Drawing.Size(103, 20);
             this.labelPrecoUnitario.TabIndex = 2;
@@ -84,7 +86,7 @@
             // 
             // buttonSalvar
             // 
-            this.buttonSalvar.Location = new System.Drawing.Point(677, 298);
+            this.buttonSalvar.Location = new System.Drawing.Point(851, 299);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(94, 29);
             this.buttonSalvar.TabIndex = 4;
@@ -94,24 +96,24 @@
             // 
             // textBoxNome
             // 
-            this.textBoxNome.Location = new System.Drawing.Point(441, 96);
+            this.textBoxNome.Location = new System.Drawing.Point(615, 97);
             this.textBoxNome.Name = "textBoxNome";
             this.textBoxNome.Size = new System.Drawing.Size(330, 27);
-            this.textBoxNome.TabIndex = 5;
+            this.textBoxNome.TabIndex = 1;
             // 
             // textBoxQuantidade
             // 
-            this.textBoxQuantidade.Location = new System.Drawing.Point(441, 174);
+            this.textBoxQuantidade.Location = new System.Drawing.Point(615, 175);
             this.textBoxQuantidade.Name = "textBoxQuantidade";
             this.textBoxQuantidade.Size = new System.Drawing.Size(330, 27);
-            this.textBoxQuantidade.TabIndex = 6;
+            this.textBoxQuantidade.TabIndex = 2;
             // 
             // textBoxPrecoUnitario
             // 
-            this.textBoxPrecoUnitario.Location = new System.Drawing.Point(441, 248);
+            this.textBoxPrecoUnitario.Location = new System.Drawing.Point(615, 249);
             this.textBoxPrecoUnitario.Name = "textBoxPrecoUnitario";
             this.textBoxPrecoUnitario.Size = new System.Drawing.Size(330, 27);
-            this.textBoxPrecoUnitario.TabIndex = 7;
+            this.textBoxPrecoUnitario.TabIndex = 3;
             // 
             // dataGridView1
             // 
@@ -123,12 +125,13 @@
             this.ColumnQuantidade,
             this.Quantidade,
             this.ColumnPreco});
-            this.dataGridView1.Location = new System.Drawing.Point(41, 63);
+            this.dataGridView1.Location = new System.Drawing.Point(41, 97);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(369, 477);
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(554, 477);
             this.dataGridView1.TabIndex = 8;
             // 
             // ColumnNome
@@ -163,11 +166,33 @@
             this.ColumnPreco.ReadOnly = true;
             this.ColumnPreco.Width = 125;
             // 
+            // buttonEditar
+            // 
+            this.buttonEditar.Location = new System.Drawing.Point(401, 62);
+            this.buttonEditar.Name = "buttonEditar";
+            this.buttonEditar.Size = new System.Drawing.Size(94, 29);
+            this.buttonEditar.TabIndex = 9;
+            this.buttonEditar.Text = "Editar";
+            this.buttonEditar.UseVisualStyleBackColor = true;
+            this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
+            // 
+            // buttonApagar
+            // 
+            this.buttonApagar.Location = new System.Drawing.Point(501, 61);
+            this.buttonApagar.Name = "buttonApagar";
+            this.buttonApagar.Size = new System.Drawing.Size(94, 29);
+            this.buttonApagar.TabIndex = 10;
+            this.buttonApagar.Text = "Apagar";
+            this.buttonApagar.UseVisualStyleBackColor = true;
+            this.buttonApagar.Click += new System.EventHandler(this.buttonApagar_Click);
+            // 
             // ProdutoCadatroSimplificadoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 563);
+            this.ClientSize = new System.Drawing.Size(975, 602);
+            this.Controls.Add(this.buttonApagar);
+            this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBoxPrecoUnitario);
             this.Controls.Add(this.textBoxQuantidade);
@@ -200,5 +225,7 @@
         private DataGridViewTextBoxColumn ColumnQuantidade;
         private DataGridViewTextBoxColumn Quantidade;
         private DataGridViewTextBoxColumn ColumnPreco;
+        private Button buttonEditar;
+        private Button buttonApagar;
     }
 }
