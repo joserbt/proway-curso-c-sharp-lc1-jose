@@ -19,13 +19,14 @@ namespace WindowsFormsExemplos.Forms
 
         private void buttonFolhaPagamento_Click(object sender, EventArgs e)
         {
+            // <NomeClasse> <nomeObjeto> = new <NomeClasse>();
             Form1 folhaPagamentoForm = new Form1();
-            folhaPagamentoForm.ShowDialog();
+            folhaPagamentoForm.Show();
         }
 
         private void buttonCadastroSimplificadoProduto_Click(object sender, EventArgs e)
         {
-            ProdutoCadatroSimplificadoForm form = new ProdutoCadatroSimplificadoForm();
+            ProdutoCadastroSimplificadoForm form = new ProdutoCadastroSimplificadoForm();
             form.ShowDialog();
         }
     }

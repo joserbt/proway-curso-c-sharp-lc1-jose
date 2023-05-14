@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fundamentos", "Fundamentos\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsFormsExemplos", "WindowsFormsExemplos\WindowsFormsExemplos.csproj", "{F83CD29F-46BF-4393-8123-509DC20718D8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProWayModelos", "ProWayModelos\ProWayModelos.csproj", "{89972CF1-A687-43BF-AFDE-74DBD41F7245}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProWayModelos", "ProWayModelos\ProWayModelos.csproj", "{89972CF1-A687-43BF-AFDE-74DBD41F7245}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
