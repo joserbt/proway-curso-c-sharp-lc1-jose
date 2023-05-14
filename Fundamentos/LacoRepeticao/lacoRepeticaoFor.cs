@@ -40,6 +40,7 @@ namespace Fundamentos.LacoRepeticao
             {
                 Console.WriteLine(indice);
             }
+            Console.WriteLine("jose lindo");
 
             // DateTime é utilizado para trabalhar com data e hora
             // DateTime.Now pega a data e hora atual do Sistema Operacional

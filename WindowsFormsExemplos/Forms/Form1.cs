@@ -50,8 +50,13 @@ namespace WindowsFormsExemplos
 Salário Bruto: {folhaPagamento.CalcularSalarioBruto():C}
 Desconto INSS: {folhaPagamento.CalcularInss():C}");
 
-            string jsonFolhaPagamento = JsonConvert.SerializeObject(folhaPagamento);
-            File.WriteAllText("C:\\Users\\Moc\\Desktop\\Arquivo.json", jsonFolhaPagamento);
+            //string jsonFolhaPagamento = JsonConvert.SerializeObject(folhaPagamento);
+            //File.WriteAllText("C:\\Users\\Moc\\Desktop\\Arquivo.json", jsonFolhaPagamento);
+
+        }
+
+        private void textBoxNome_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
