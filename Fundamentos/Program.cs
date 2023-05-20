@@ -5,6 +5,7 @@ using Fundamentos.LacoRepeticao;
 using Fundamentos.VetorComFor;
 using Fundamentos.Vetores;
 using Fundamentos.OrientacaoObjetos;
+using Fundamentos.Listas;
 
 //ApresentarDados01 executor = new ApresentarDados01();
 //executor.Executar();
@@ -33,5 +34,5 @@ using Fundamentos.OrientacaoObjetos;
 //Loja executar = new Loja();
 //executar.Executar();
 
-ListaColaboradores executar = new ListaColaboradores();
-executar.CalcularFolhasPagamento();
+ListaDeObjetos executar = new ListaDeObjetos();
+executar.Executar();

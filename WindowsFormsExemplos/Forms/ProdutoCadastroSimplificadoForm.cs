@@ -25,8 +25,34 @@ namespace WindowsFormsExemplos.Forms
         {
             Produto produto = new Produto();
             produto.Nome = textBoxNome.Text.Trim();
-            produto.Quantidade = Convert.ToInt32(textBoxQuantidade.Text);
-            produto.ValorUnitario = Convert.ToDouble(textBoxPrecoUnitario.Text);
+            if(produto.Nome.Length < 3)
+            {
+                MessageBox.Show("nome deve conter no minimo 3 caracteres");
+                textBoxNome.Focus();
+                return;
+            }
+
+            try
+            {
+                produto.Quantidade = Convert.ToInt32(textBoxQuantidade.Text);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("quantidade deve conter numero inteiro");
+                textBoxQuantidade.Focus();
+                return;
+            }
+            try
+            {
+                produto.ValorUnitario = Convert.ToDouble(textBoxPrecoUnitario.Text);
+                    textBoxPrecoUnitario.Text.Replace("R$", "").Trim();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Valor unitário deve conter somente numeros reais");
+                textBoxPrecoUnitario.Focus();
+                return;
+            }
 
             // Verificar que não é modo de edição, ou seja, deve criar uma
             // nova linha na tabela
@@ -45,7 +71,7 @@ namespace WindowsFormsExemplos.Forms
                 dataGridView1.Rows[indiceLinhaEdicao].Cells[0].Value = produto.Nome;
                 dataGridView1.Rows[indiceLinhaEdicao].Cells[1].Value = produto.Quantidade;
                 dataGridView1.Rows[indiceLinhaEdicao].Cells[2].Value = produto.ValorUnitario;
-                dataGridView1.Rows[indiceLinhaEdicao].Cells[3].Value = 
+                dataGridView1.Rows[indiceLinhaEdicao].Cells[3].Value =
                     produto.Quantidade * produto.ValorUnitario;
                 indiceLinhaEdicao = -1;
             }
@@ -68,8 +94,23 @@ namespace WindowsFormsExemplos.Forms
 
         private void buttonApagar_Click(object sender, EventArgs e)
         {
+            // Validar que o usuário selecionou alguma linha
+            if(dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Não existe produtos cadastrados");
+                return;
+            }
+
             // Obtendo o indice da linha selecionada pelo usuário
             int indiceLinhaSelecionada = dataGridView1.SelectedRows[0].Index;
+
+            string nome = dataGridView1.Rows[indiceLinhaSelecionada].Cells[0].Value.ToString();
+            DialogResult resultado = 
+                MessageBox.Show($"deseja realmente apagar o produto '{nome}'? ", "AVISO", MessageBoxButtons.YesNo);
+                    if(resultado == DialogResult.No)
+                    {
+                        return;
+                    }
 
             // Removendo a linha selecionada do DataGridView
             dataGridView1.Rows.RemoveAt(indiceLinhaSelecionada);
@@ -77,6 +118,12 @@ namespace WindowsFormsExemplos.Forms
 
         private void buttonEditar_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Não existe produtos cadastrados");
+                return;
+            }
+
             // Obtém o indice da linha desejada para edição
             indiceLinhaEdicao = dataGridView1.SelectedRows[0].Index;
 
