@@ -30,6 +30,7 @@
         {
             buttonFolhaPagamento = new Button();
             buttonCadastroSimplificadoProduto = new Button();
+            buttonCadastroFilmes = new Button();
             SuspendLayout();
             // 
             // buttonFolhaPagamento
@@ -45,7 +46,7 @@
             // 
             // buttonCadastroSimplificadoProduto
             // 
-            buttonCadastroSimplificadoProduto.Location = new Point(287, 308);
+            buttonCadastroSimplificadoProduto.Location = new Point(287, 287);
             buttonCadastroSimplificadoProduto.Margin = new Padding(3, 4, 3, 4);
             buttonCadastroSimplificadoProduto.Name = "buttonCadastroSimplificadoProduto";
             buttonCadastroSimplificadoProduto.Size = new Size(297, 52);
@@ -54,11 +55,22 @@
             buttonCadastroSimplificadoProduto.UseVisualStyleBackColor = true;
             buttonCadastroSimplificadoProduto.Click += buttonCadastroSimplificadoProduto_Click;
             // 
+            // buttonCadastroFilmes
+            // 
+            buttonCadastroFilmes.Location = new Point(287, 180);
+            buttonCadastroFilmes.Name = "buttonCadastroFilmes";
+            buttonCadastroFilmes.Size = new Size(297, 46);
+            buttonCadastroFilmes.TabIndex = 2;
+            buttonCadastroFilmes.Text = "Cadastro de filmes";
+            buttonCadastroFilmes.UseVisualStyleBackColor = true;
+            buttonCadastroFilmes.Click += buttonCadastroFilmes_Click;
+            // 
             // MenuPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 600);
+            Controls.Add(buttonCadastroFilmes);
             Controls.Add(buttonCadastroSimplificadoProduto);
             Controls.Add(buttonFolhaPagamento);
             Margin = new Padding(3, 4, 3, 4);
@@ -72,5 +84,6 @@
 
         private Button buttonFolhaPagamento;
         private Button buttonCadastroSimplificadoProduto;
+        private Button buttonCadastroFilmes;
     }
 }

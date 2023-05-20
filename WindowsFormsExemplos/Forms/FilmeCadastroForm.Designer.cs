@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             dataGridView = new DataGridView();
+            ColumnCodigo = new DataGridViewTextBoxColumn();
+            ColumnNome = new DataGridViewTextBoxColumn();
+            ColumnCategoria = new DataGridViewTextBoxColumn();
+            ColumnDuracao = new DataGridViewTextBoxColumn();
             labelListaFilmes = new Label();
             textBoxNome = new TextBox();
             labelNome = new Label();
@@ -61,20 +65,58 @@
             // 
             // dataGridView
             // 
+            dataGridView.AllowUserToAddRows = false;
+            dataGridView.AllowUserToDeleteRows = false;
             dataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView.Columns.AddRange(new DataGridViewColumn[] { ColumnCodigo, ColumnNome, ColumnCategoria, ColumnDuracao });
             dataGridView.Location = new Point(12, 53);
             dataGridView.Name = "dataGridView";
+            dataGridView.ReadOnly = true;
             dataGridView.RowHeadersWidth = 51;
             dataGridView.RowTemplate.Height = 29;
             dataGridView.Size = new Size(514, 608);
             dataGridView.TabIndex = 0;
             // 
+            // ColumnCodigo
+            // 
+            ColumnCodigo.HeaderText = "Código";
+            ColumnCodigo.MinimumWidth = 6;
+            ColumnCodigo.Name = "ColumnCodigo";
+            ColumnCodigo.ReadOnly = true;
+            ColumnCodigo.Width = 125;
+            // 
+            // ColumnNome
+            // 
+            ColumnNome.HeaderText = "Nome";
+            ColumnNome.MinimumWidth = 6;
+            ColumnNome.Name = "ColumnNome";
+            ColumnNome.ReadOnly = true;
+            ColumnNome.Width = 125;
+            // 
+            // ColumnCategoria
+            // 
+            ColumnCategoria.HeaderText = "Categoria";
+            ColumnCategoria.MinimumWidth = 6;
+            ColumnCategoria.Name = "ColumnCategoria";
+            ColumnCategoria.ReadOnly = true;
+            ColumnCategoria.Width = 125;
+            // 
+            // ColumnDuracao
+            // 
+            ColumnDuracao.HeaderText = "Duração";
+            ColumnDuracao.MinimumWidth = 6;
+            ColumnDuracao.Name = "ColumnDuracao";
+            ColumnDuracao.ReadOnly = true;
+            ColumnDuracao.Width = 125;
+            // 
             // labelListaFilmes
             // 
             labelListaFilmes.AutoSize = true;
-            labelListaFilmes.Location = new Point(12, 23);
+            labelListaFilmes.Font = new Font("Futura Md BT", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            labelListaFilmes.ForeColor = SystemColors.MenuHighlight;
+            labelListaFilmes.Location = new Point(12, 22);
             labelListaFilmes.Name = "labelListaFilmes";
-            labelListaFilmes.Size = new Size(104, 20);
+            labelListaFilmes.Size = new Size(117, 18);
             labelListaFilmes.TabIndex = 1;
             labelListaFilmes.Text = "Lista de filmes";
             // 
@@ -234,6 +276,7 @@
             // 
             // dateTimePickerDataLancamento
             // 
+            dateTimePickerDataLancamento.Format = DateTimePickerFormat.Short;
             dateTimePickerDataLancamento.Location = new Point(615, 358);
             dateTimePickerDataLancamento.Name = "dateTimePickerDataLancamento";
             dateTimePickerDataLancamento.Size = new Size(343, 27);
@@ -242,7 +285,7 @@
             // labelQuantidadeValor
             // 
             labelQuantidadeValor.AutoSize = true;
-            labelQuantidadeValor.Location = new Point(412, 671);
+            labelQuantidadeValor.Location = new Point(416, 669);
             labelQuantidadeValor.Name = "labelQuantidadeValor";
             labelQuantidadeValor.Size = new Size(87, 20);
             labelQuantidadeValor.TabIndex = 20;
@@ -251,7 +294,7 @@
             // labelQuantidade
             // 
             labelQuantidade.AutoSize = true;
-            labelQuantidade.Location = new Point(505, 671);
+            labelQuantidade.Location = new Point(509, 669);
             labelQuantidade.Name = "labelQuantidade";
             labelQuantidade.Size = new Size(17, 20);
             labelQuantidade.TabIndex = 21;
@@ -268,9 +311,9 @@
             // 
             // buttonEditar
             // 
-            buttonEditar.Location = new Point(532, 123);
+            buttonEditar.Location = new Point(530, 123);
             buttonEditar.Name = "buttonEditar";
-            buttonEditar.Size = new Size(73, 62);
+            buttonEditar.Size = new Size(75, 62);
             buttonEditar.TabIndex = 23;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = true;
@@ -304,6 +347,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(994, 698);
             Controls.Add(textBoxPesquisa);
             Controls.Add(labelVitorias);
@@ -333,7 +377,7 @@
             Controls.Add(labelListaFilmes);
             Controls.Add(dataGridView);
             Name = "FilmeCadastroForm";
-            Text = "FilmeCadastroForm";
+            Text = "Filmes";
             ((System.ComponentModel.ISupportInitialize)dataGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDownMinutos).EndInit();
             ResumeLayout(false);
@@ -369,5 +413,9 @@
         private Button buttonApagar;
         private Label labelVitorias;
         private TextBox textBoxPesquisa;
+        private DataGridViewTextBoxColumn ColumnCodigo;
+        private DataGridViewTextBoxColumn ColumnNome;
+        private DataGridViewTextBoxColumn ColumnCategoria;
+        private DataGridViewTextBoxColumn ColumnDuracao;
     }
 }

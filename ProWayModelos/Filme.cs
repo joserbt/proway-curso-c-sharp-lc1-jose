@@ -1,0 +1,36 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProWayModelos
+{
+    internal class Filme
+    {
+        public int Codigo { get; set; }
+
+        public string Nome { get; set; } 
+
+        public ushort Minutos { get; set; }
+
+        public FilmeCategoria Categoria { get; set; }
+
+        public bool VitoriaOscar { get; set; }
+
+        public bool VitoriaGrammy { get; set; } 
+
+        public bool VitoriaEmmy { get; set; }
+
+        public bool Flopou { get; set; }
+
+        public DateTime Datalancamento { get; set; }
+
+        public string Descricao { get; set; }
+    }
+
+    public enum FilmeCategoria
+    {
+
+    }
+}
