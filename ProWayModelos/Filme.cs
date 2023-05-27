@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProWayModelos
 {
-    internal class Filme
+    public class Filme
     {
         public int Codigo { get; set; }
 
