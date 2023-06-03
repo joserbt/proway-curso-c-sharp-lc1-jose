@@ -25,7 +25,7 @@ namespace WindowsFormsExemplos.Forms
         {
             Produto produto = new Produto();
             produto.Nome = textBoxNome.Text.Trim();
-            if(produto.Nome.Length < 3)
+            if (produto.Nome.Length < 3)
             {
                 MessageBox.Show("nome deve conter no minimo 3 caracteres");
                 textBoxNome.Focus();
@@ -36,7 +36,7 @@ namespace WindowsFormsExemplos.Forms
             {
                 produto.Quantidade = Convert.ToInt32(textBoxQuantidade.Text);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("quantidade deve conter numero inteiro");
                 textBoxQuantidade.Focus();
@@ -45,9 +45,9 @@ namespace WindowsFormsExemplos.Forms
             try
             {
                 produto.ValorUnitario = Convert.ToDouble(textBoxPrecoUnitario.Text);
-                    textBoxPrecoUnitario.Text.Replace("R$", "").Trim();
+                textBoxPrecoUnitario.Text.Replace("R$", "").Trim();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Valor unitário deve conter somente numeros reais");
                 textBoxPrecoUnitario.Focus();
@@ -95,7 +95,7 @@ namespace WindowsFormsExemplos.Forms
         private void buttonApagar_Click(object sender, EventArgs e)
         {
             // Validar que o usuário selecionou alguma linha
-            if(dataGridView1.SelectedRows.Count == 0)
+            if (dataGridView1.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Não existe produtos cadastrados");
                 return;
@@ -105,12 +105,12 @@ namespace WindowsFormsExemplos.Forms
             int indiceLinhaSelecionada = dataGridView1.SelectedRows[0].Index;
 
             string nome = dataGridView1.Rows[indiceLinhaSelecionada].Cells[0].Value.ToString();
-            DialogResult resultado = 
+            DialogResult resultado =
                 MessageBox.Show($"deseja realmente apagar o produto '{nome}'? ", "AVISO", MessageBoxButtons.YesNo);
-                    if(resultado == DialogResult.No)
-                    {
-                        return;
-                    }
+            if (resultado == DialogResult.No)
+            {
+                return;
+            }
 
             // Removendo a linha selecionada do DataGridView
             dataGridView1.Rows.RemoveAt(indiceLinhaSelecionada);
@@ -138,6 +138,11 @@ namespace WindowsFormsExemplos.Forms
             textBoxNome.Text = nome;
             textBoxQuantidade.Text = quantidade.ToString();
             textBoxPrecoUnitario.Text = valorUnitario.ToString();
+        }
+
+        private void ProdutoCadastroSimplificadoForm_Load(object sender, EventArgs e)
+        {
+            ListarProdutos();
         }
     }
 }

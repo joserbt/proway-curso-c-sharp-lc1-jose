@@ -206,6 +206,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "ProdutoCadastroSimplificadoForm";
             Text = "ProdutoCadastroSimplificadoForm";
+            Load += ProdutoCadastroSimplificadoForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

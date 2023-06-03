@@ -31,6 +31,9 @@ namespace ProWayModelos
 
     public enum FilmeCategoria
     {
-
+        Acao, 
+        Comedia,
+        Terror,
+        Suspense
     }
 }

@@ -1,15 +1,6 @@
 ﻿using Newtonsoft.Json;
 using ProWayModelos;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
 
 namespace WindowsFormsExemplos.Forms
 {
@@ -17,9 +8,12 @@ namespace WindowsFormsExemplos.Forms
     {
         List<Filme> filmes = new List<Filme>();
         int codigo = 1;
+        string caminhoArquivoJsonFilmeDesktop = "";
 
         public FilmeCadastroForm()
         {
+            caminhoArquivoJsonFilmeDesktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) +
+                                            Path.DirectorySeparatorChar + "filmes.json";
             InitializeComponent();
         }
 
@@ -28,6 +22,7 @@ namespace WindowsFormsExemplos.Forms
             LerFilmesArquivosJson();
             AdicionarFilmesDataGridView(filmes);
             LimparCampos();
+            prencherComboBoxCategoria();
         }
 
         private void AdicionarFilmesDataGridView(List<Filme> filmes)
@@ -40,8 +35,10 @@ namespace WindowsFormsExemplos.Forms
 
                 dataGridView.Rows.Add(new object[]
                 {
-                    filme.Codigo
-                    , filme.Nome
+                    filme.Codigo,
+                    filme.Nome,
+                    filme.Categoria,
+                    filme.Minutos
                 });
             }
 
@@ -57,14 +54,14 @@ namespace WindowsFormsExemplos.Forms
         {
             textBoxNome.Clear();
             richTextBoxDescricao.Clear();
-            numericUpDownMinutos.Value = 0;
+            numericUpDownMinutos.Value = numericUpDownMinutos.Minimum;
             comboBoxCategoria.SelectedIndex = -1;
             //combobox é uma lista de intens, ou seja para remover a seleção atribuimos o -1 para o indice do item selecionado
             dateTimePickerDataLancamento.ResetText();
             checkBoxEmmy.Checked = false;
             checkBoxGrammy.Checked = false;
             checkBoxOscar.Checked = false;
-            radioButtonFlopouNao.Checked = false;
+            radioButtonFlopouNao.Checked = true;
             radioButtonFlopouSim.Checked = false;
             labelCodigoEditar.Text = "";
         }
@@ -73,35 +70,72 @@ namespace WindowsFormsExemplos.Forms
         {
             var nome = textBoxNome.Text;
             var codigoParaEditar = labelCodigoEditar.Text;
+            var minutos = Convert.ToUInt16(numericUpDownMinutos.Value);
+            var vitoriaOscar = checkBoxOscar.Checked;
+            var vitoriaGrammy = checkBoxGrammy.Checked;
+            var vitoriaEmmy = checkBoxEmmy.Checked;
+            var flopou = radioButtonFlopouSim.Checked;
+            var descricao = richTextBoxDescricao.Text;
+            var dataLancamento = dateTimePickerDataLancamento.Value;
+
+            if (dataLancamento >= DateTime.Today)
+            {
+                MessageBox.Show("data de lançamento deve ser menor que a data atual");
+            }
+
+            if (comboBoxCategoria.SelectedIndex == -1)
+            {
+                MessageBox.Show("escolha uma categoria!");
+                return;
+            }
+            var categoria = (FilmeCategoria)comboBoxCategoria.SelectedItem;
+            //comboBoxCategoria
+
+            var filme = new Filme();
+            if (codigoParaEditar != "")
+            {
+                filme = obterFilmeParaEditar(codigoParaEditar);
+            }
+            filme.Nome = nome;
+            filme.Minutos = minutos;
+            filme.VitoriaOscar = vitoriaOscar;
+            filme.VitoriaGrammy = vitoriaGrammy;
+            filme.VitoriaEmmy = vitoriaEmmy;
+            filme.Flopou = flopou;
+            filme.Descricao = descricao;
+            filme.Datalancamento = dataLancamento;
+            filme.Categoria = categoria;
 
             if (codigoParaEditar == "")
             {
-                AdicionarNovoFilme(nome);
+                AdicionarNovoFilme(filme);
             }
-            else
-            {
-                EditarFilme(nome, codigoParaEditar);
-            }
+
             SalvarFilmesEmAruivoJson();
             AdicionarFilmesDataGridView(filmes);
+            LimparCampos();
         }
 
-        private void EditarFilme(string nome, string codigoParaEditar)
+        private Filme obterFilmeParaEditar(string codigoParaEditar)
         {
-            for(int i = 0; i < filmes.Count; i++)
+            //percorrer lista de filme buscando pelo codigo do filme que sera alterado as informações
+            for (int i = 0; i < filmes.Count; i++)
             {
                 var filme = filmes[i];
+                //verificar se algum filme contem o codigo para editar
                 if (filme.Codigo.ToString() == codigoParaEditar)
                 {
-                    filme.Nome = nome;
+                    return filme;
                 }
             }
+
+            //neste caso não exite um filme com codigoParaEditar
+            return null;
         }
 
-        private void AdicionarNovoFilme(string nome)
+        private void AdicionarNovoFilme(Filme filme)
         {
-            var filme = new Filme();
-            filme.Nome = nome;
+
             filme.Codigo = codigo;
             codigo++;
 
@@ -114,19 +148,19 @@ namespace WindowsFormsExemplos.Forms
 
             var filmesSerializados = JsonConvert.SerializeObject(filmes);
             File.WriteAllText(
-                "C:\\Users\\73343\\Desktop\\filmes.json", filmesSerializados);
+                caminhoArquivoJsonFilmeDesktop, filmesSerializados);
         }
 
         private void LerFilmesArquivosJson()
         {
 
-            if (File.Exists("C:\\Users\\73343\\Desktop\\filmes.json") == false)
+            if (File.Exists(caminhoArquivoJsonFilmeDesktop) == false)
             {
                 return;
             }
 
             var arquivoLinhas = File.ReadAllText(
-                "C:\\Users\\73343\\Desktop\\filmes.json");
+                caminhoArquivoJsonFilmeDesktop);
 
             var filmesDeserializados = JsonConvert
                 .DeserializeObject<List<Filme>>(arquivoLinhas);
@@ -219,12 +253,39 @@ namespace WindowsFormsExemplos.Forms
             }
 
             var linhaSelecionada = dataGridView.SelectedRows[0];
-            var codigo = Convert.ToInt32(linhaSelecionada.Cells[0].Value);
-            var nome = linhaSelecionada.Cells[1].Value.ToString();
+            var codigo = linhaSelecionada.Cells[0].Value.ToString();
+            var filme = obterFilmeParaEditar(codigo);
 
-            textBoxNome.Text = nome;
+            textBoxNome.Text = filme.Nome;
+            labelCodigoEditar.Text = codigo;
+            dateTimePickerDataLancamento.Value = filme.Datalancamento;
+            checkBoxEmmy.Checked = filme.VitoriaEmmy;
+            checkBoxGrammy.Checked = filme.VitoriaGrammy;
+            checkBoxOscar.Checked = filme.VitoriaOscar;
+            richTextBoxDescricao.Text = filme.Descricao;
+            numericUpDownMinutos.Value = filme.Minutos;
 
-            labelCategoria.Text = codigo.ToString();
+            if (filme.Flopou == true)
+            {
+                radioButtonFlopouSim.Checked = true;
+            }
+            else
+            {
+                radioButtonFlopouNao.Checked = true;
+            }
+
+
+            labelCodigoEditar.Text = codigo.ToString();
         }
+
+        private void prencherComboBoxCategoria()
+        {
+            //obter lista de categorias de A a Z
+            var categorias = Enum.GetValues<FilmeCategoria>().OrderBy(x => x).ToList();
+            comboBoxCategoria.DataSource = categorias;
+            comboBoxCategoria.SelectedIndex = -1;
+        }
+
+        
     }
 }
