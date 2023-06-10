@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsExemplos.BandoDados;
 
 namespace WindowsFormsExemplos.Forms
 {
@@ -107,12 +108,8 @@ namespace WindowsFormsExemplos.Forms
 
         private SqlCommand Conectar()
         {
-            var conexao = new SqlConnection();
-            conexao.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\73343\proway-curso-c-sharp-lc1-jose\WindowsFormsExemplos\BandoDados\WindowsFormsBancosDados.mdf;Integrated Security=True";
-            conexao.Open();
-
-            var comando = conexao.CreateCommand();
-            return comando;
+            var bancoDadosConexao = new BancoDadosConexao();
+            return bancoDadosConexao.Conectar();
         }
 
         private void ProdutoCadastriSimplificadoBancoDadosForm_Load(object sender, EventArgs e)

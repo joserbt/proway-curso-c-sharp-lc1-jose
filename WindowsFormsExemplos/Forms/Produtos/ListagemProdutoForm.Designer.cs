@@ -115,6 +115,7 @@
             buttonApagar.TabIndex = 22;
             buttonApagar.Text = "Apagar";
             buttonApagar.UseVisualStyleBackColor = true;
+            buttonApagar.Click += buttonApagar_Click;
             // 
             // buttonCadastrar
             // 
@@ -138,6 +139,7 @@
             Controls.Add(dataGridView1);
             Name = "ListagemProdutoForm";
             Text = "Lista De Produtos";
+            Load += ListagemProdutoForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
