@@ -142,7 +142,7 @@ namespace WindowsFormsExemplos.Forms
 
         private void ProdutoCadastroSimplificadoForm_Load(object sender, EventArgs e)
         {
-            ListarProdutos();
+            
         }
     }
 }

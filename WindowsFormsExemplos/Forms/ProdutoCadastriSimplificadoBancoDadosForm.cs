@@ -14,6 +14,8 @@ namespace WindowsFormsExemplos.Forms
 {
     public partial class ProdutoCadastriSimplificadoBancoDadosForm : Form
     {
+        private int idParaEditar = -1;
+
         public ProdutoCadastriSimplificadoBancoDadosForm()
         {
             InitializeComponent();
@@ -25,6 +27,47 @@ namespace WindowsFormsExemplos.Forms
             var quantidade = Convert.ToInt32(textBoxQuantidade.Text.Trim());
             var precoUnitario = Convert.ToDouble(textBoxPrecoUnitario.Text.Trim());
 
+            if(idParaEditar == -1)
+            {
+                Cadastrar(nome, quantidade, precoUnitario);
+            }
+            else
+            {
+                Editar(nome, quantidade, precoUnitario);
+            }
+            LimparCampos();
+            Cadastrar(nome, quantidade, precoUnitario);
+
+            ListarProdutos();
+        }
+
+        private void LimparCampos()
+        {
+            textBoxNome.Clear();
+            textBoxPrecoUnitario.Clear();
+            textBoxQuantidade.Clear();
+            idParaEditar = -1;
+        }
+
+        private void Editar(string nome, int quantidade, double precoUnitario)
+        {
+            var comando = Conectar();
+            comando.CommandText = @"UPDATE produtos SET
+                                    nome = @NOME
+                                    quantidade = @QUANTIDADE
+                                    preco_unitario = @PRECO_UNITARIO
+                                    WHERE id = @ID";
+            comando.Parameters.AddWithValue("@NOME", nome);
+            comando.Parameters.AddWithValue("@QUANTIDADE", quantidade);
+            comando.Parameters.AddWithValue("PRECO_UNITARIO", precoUnitario);
+            comando.Parameters.AddWithValue("@ID", idParaEditar);
+            comando.ExecuteNonQuery();
+            MessageBox.Show("Produto alterado com sucesso");
+
+        }
+
+        private void Cadastrar(string nome, int quantidade, double precoUnitario)
+        {
             var comando = Conectar();
             comando.CommandText = @"INSERT INTO produtos (nome, preco_unitario, quantidade) VALUES (@NOME, @PRECO_UNITARIO, @QUANTIDADE);";
 
@@ -33,7 +76,6 @@ namespace WindowsFormsExemplos.Forms
             comando.Parameters.AddWithValue("@QUANTIDADE", quantidade);
             comando.ExecuteNonQuery();
             MessageBox.Show("produto cadastrado com sucesso");
-            ListarProdutos();
         }
 
         private void ListarProdutos()
@@ -50,7 +92,7 @@ namespace WindowsFormsExemplos.Forms
             dataGridView1.Rows.Clear();
 
             //percorrer a tabela em memoria (registro dos produtos)
-            for (int i = 0, i < tabelaEmMemoria; i++)
+            for (int i = 0; i < tabelaEmMemoria.Rows.Count; i++)
             {
                 var linha = tabelaEmMemoria.Rows[i];
                 dataGridView1.Rows.Add(new object[]
@@ -90,6 +132,34 @@ namespace WindowsFormsExemplos.Forms
 
             MessageBox.Show("produto apagdo com sucesso");
             ListarProdutos();
+        }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            var conexao = Conectar();
+            conexao.CommandText = "SELECT * FROM produtos WHERE id = @ID";
+
+            var linhaSelecionada = dataGridView1.SelectedRows[0];
+            var id = Convert.ToInt32(linhaSelecionada.Cells[0].Value);
+
+            conexao.Parameters.AddWithValue("@ID", id);
+
+            //Criar tabela em memória para resgatar os registros
+            var tabelaEmMemoria = new DataTable();
+            tabelaEmMemoria.Load(conexao.ExecuteReader());
+
+            //obter dados do registro obtido no select realizado
+            var registro = tabelaEmMemoria.Rows[0];
+            var nome = registro["nome"].ToString();
+            var precoUnitario = Convert.ToDecimal(registro["preco_unitario"]);
+            var quantidade = Convert.ToInt32(registro["quantidade"]);
+
+            //preencher campos para permitir a editar o registro
+            textBoxNome.Text = nome;
+            textBoxQuantidade.Text = quantidade.ToString();
+            textBoxPrecoUnitario.Text = precoUnitario.ToString();
+            idParaEditar = id;
+            textBoxNome.Focus();
         }
     }
 }

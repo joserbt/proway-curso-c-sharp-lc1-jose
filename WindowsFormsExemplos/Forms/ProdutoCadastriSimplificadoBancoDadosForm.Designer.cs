@@ -29,6 +29,11 @@
         private void InitializeComponent()
         {
             dataGridView1 = new DataGridView();
+            ColumnId = new DataGridViewTextBoxColumn();
+            ColumnNome = new DataGridViewTextBoxColumn();
+            ColumnQuantidade = new DataGridViewTextBoxColumn();
+            ColumnPrecoUnitario = new DataGridViewTextBoxColumn();
+            ColumnPreço = new DataGridViewTextBoxColumn();
             textBoxNome = new TextBox();
             textBoxQuantidade = new TextBox();
             textBoxPrecoUnitario = new TextBox();
@@ -39,11 +44,6 @@
             labelNome = new Label();
             buttonEditar = new Button();
             buttonApagar = new Button();
-            ColumnId = new DataGridViewTextBoxColumn();
-            ColumnNome = new DataGridViewTextBoxColumn();
-            ColumnQuantidade = new DataGridViewTextBoxColumn();
-            ColumnPrecoUnitario = new DataGridViewTextBoxColumn();
-            ColumnPreço = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -62,6 +62,46 @@
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(679, 354);
             dataGridView1.TabIndex = 19;
+            // 
+            // ColumnId
+            // 
+            ColumnId.HeaderText = "Código";
+            ColumnId.MinimumWidth = 6;
+            ColumnId.Name = "ColumnId";
+            ColumnId.ReadOnly = true;
+            ColumnId.Width = 125;
+            // 
+            // ColumnNome
+            // 
+            ColumnNome.HeaderText = "Nome";
+            ColumnNome.MinimumWidth = 6;
+            ColumnNome.Name = "ColumnNome";
+            ColumnNome.ReadOnly = true;
+            ColumnNome.Width = 125;
+            // 
+            // ColumnQuantidade
+            // 
+            ColumnQuantidade.HeaderText = "Quantidade";
+            ColumnQuantidade.MinimumWidth = 6;
+            ColumnQuantidade.Name = "ColumnQuantidade";
+            ColumnQuantidade.ReadOnly = true;
+            ColumnQuantidade.Width = 125;
+            // 
+            // ColumnPrecoUnitario
+            // 
+            ColumnPrecoUnitario.HeaderText = "Preço Unitário";
+            ColumnPrecoUnitario.MinimumWidth = 6;
+            ColumnPrecoUnitario.Name = "ColumnPrecoUnitario";
+            ColumnPrecoUnitario.ReadOnly = true;
+            ColumnPrecoUnitario.Width = 125;
+            // 
+            // ColumnPreço
+            // 
+            ColumnPreço.HeaderText = "Preço";
+            ColumnPreço.MinimumWidth = 6;
+            ColumnPreço.Name = "ColumnPreço";
+            ColumnPreço.ReadOnly = true;
+            ColumnPreço.Width = 125;
             // 
             // textBoxNome
             // 
@@ -143,6 +183,7 @@
             buttonEditar.TabIndex = 21;
             buttonEditar.Text = "Editar";
             buttonEditar.UseVisualStyleBackColor = true;
+            buttonEditar.Click += buttonEditar_Click;
             // 
             // buttonApagar
             // 
@@ -154,46 +195,6 @@
             buttonApagar.Text = "Apagar";
             buttonApagar.UseVisualStyleBackColor = true;
             buttonApagar.Click += buttonApagar_Click;
-            // 
-            // ColumnId
-            // 
-            ColumnId.HeaderText = "Código";
-            ColumnId.MinimumWidth = 6;
-            ColumnId.Name = "ColumnId";
-            ColumnId.ReadOnly = true;
-            ColumnId.Width = 125;
-            // 
-            // ColumnNome
-            // 
-            ColumnNome.HeaderText = "Nome";
-            ColumnNome.MinimumWidth = 6;
-            ColumnNome.Name = "ColumnNome";
-            ColumnNome.ReadOnly = true;
-            ColumnNome.Width = 125;
-            // 
-            // ColumnQuantidade
-            // 
-            ColumnQuantidade.HeaderText = "Quantidade";
-            ColumnQuantidade.MinimumWidth = 6;
-            ColumnQuantidade.Name = "ColumnQuantidade";
-            ColumnQuantidade.ReadOnly = true;
-            ColumnQuantidade.Width = 125;
-            // 
-            // ColumnPrecoUnitario
-            // 
-            ColumnPrecoUnitario.HeaderText = "Preço Unitário";
-            ColumnPrecoUnitario.MinimumWidth = 6;
-            ColumnPrecoUnitario.Name = "ColumnPrecoUnitario";
-            ColumnPrecoUnitario.ReadOnly = true;
-            ColumnPrecoUnitario.Width = 125;
-            // 
-            // ColumnPreço
-            // 
-            ColumnPreço.HeaderText = "Preço";
-            ColumnPreço.MinimumWidth = 6;
-            ColumnPreço.Name = "ColumnPreço";
-            ColumnPreço.ReadOnly = true;
-            ColumnPreço.Width = 125;
             // 
             // ProdutoCadastriSimplificadoBancoDadosForm
             // 
