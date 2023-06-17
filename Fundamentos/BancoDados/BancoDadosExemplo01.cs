@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Fundamentos.BancoDados
 {
-    internal class BancoDadosExemplo01
+    internal class BancoDadosExemplo01 : Executor
     {
-        public void Executar()
+        public override void Executar()
         {
             /*CRUD 
              * CREATE: INSERT INTO nome_tabela (colunas) VAULES (valores)
@@ -27,7 +27,7 @@ namespace Fundamentos.BancoDados
             ConsultarRegistro();
         }
 
-        private const string CadeiaConexaoBancoDados = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\73343\Desktop\bancoDados.mdf;Integrated Security=True;Connect Timeout=30";
+        private const string CadeiaConexaoBancoDados = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\73343\Source\Repos\proway-curso-c-sharp-lc1-jose\WindowsFormsExemplos\BandoDados\WindowsFormsBancosDados.mdf;Integrated Security=True";
         private void ConsultarRegistro()
         {
             var conexao = new SqlConnection();

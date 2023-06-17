@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Fundamentos.Listas
 {
-    internal class ListaTiposPrimitivos
+    internal class ListaTiposPrimitivos : Executor
     {
-        public void Executar()
+        public override void Executar()
         {
             List<string> nomes = new List<string>(); //CRUD = Create
             nomes.Add("Fabiana");

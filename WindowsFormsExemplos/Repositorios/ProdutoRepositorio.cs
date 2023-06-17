@@ -77,6 +77,35 @@ namespace WindowsFormsExemplos.Repositorios
             return produtos;
         }
 
+        public Produto ObterPorId(int id)
+        {
+            //instaciando um objeto da classe banco de dados
+            var bancoDadosConexao = new BancoDadosConexao();
+            //abrir a conexao com banco de dados
+            var comando = bancoDadosConexao.Conectar();
+
+            comando.CommandText = "SELECT * FROM produtos WHERE id = @ID";
+            comando.Parameters.AddWithValue("@ID", id);
+
+            //cria tabela em memoria para carregar o registro
+            var tabelaEmMemoria = new DataTable();
+            tabelaEmMemoria.Load(comando.ExecuteReader());
+
+            //pegar o primeiro registro da consulta
+            var linha = tabelaEmMemoria.Rows[0];
+
+            //instaciar o objeto de produto
+            var produto = new Produto();
+
+            produto.Id= Convert.ToInt32(linha["id"]);
+            produto.Nome = linha["nome"].ToString();
+            produto.Quantidade = Convert.ToInt32(linha["quantidade"]);
+            produto.PrecoUnitario = Convert.ToDecimal(linha["preco_unitario"]);
+
+            //retornar o objeto do produto preenchido com os dados do registro consultado
+            return produto;
+        }
+
         public class Produto
         {
             public int Id { get; set; }

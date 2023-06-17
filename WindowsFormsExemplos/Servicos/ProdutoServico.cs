@@ -34,5 +34,12 @@ namespace WindowsFormsExemplos.Servicos
             //chamar o método Apagar do ProdutoRepositorio(que ira executar o DELETE)
             produtoRepositorio.Apagar(id);
         }
+
+        public Produto ObterPorId(int id)
+        {
+            var produtoRepositorio = new ProdutoRepositorio();
+            var produto = produtoRepositorio.ObterPorId(id);
+            return produto;
+        }
     }
 }

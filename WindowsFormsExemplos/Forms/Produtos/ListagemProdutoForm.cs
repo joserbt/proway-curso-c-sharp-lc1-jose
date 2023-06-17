@@ -73,5 +73,13 @@ namespace WindowsFormsExemplos.Forms.Produtos
             ListarProdutos();
 
         }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            var linhaSelecionada = dataGridView1.SelectedRows[0];
+            var id = Convert.ToInt32(linhaSelecionada.Cells[0].Value);
+            var produtoServico = new ProdutoServico();
+            var produtoEscolhido = produtoServico.ObterPorId(id);
+        }
     }
 }
