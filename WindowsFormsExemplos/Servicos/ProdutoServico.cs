@@ -17,7 +17,7 @@ namespace WindowsFormsExemplos.Servicos
             produtoRepositorio.Cadastrar(nome, precoUntario, quantidade);
         }
 
-        public List<Produto> ObterTodos()
+        public List<Produto> ObterTodos(string pesquisa)
         {
             //obter a lista de produtos da tabela de produtos
             var produtoRepositorio = new ProdutoRepositorio();
@@ -40,6 +40,12 @@ namespace WindowsFormsExemplos.Servicos
             var produtoRepositorio = new ProdutoRepositorio();
             var produto = produtoRepositorio.ObterPorId(id);
             return produto;
+        }
+
+        internal void Editar(int idProdutoEditar, string nome, decimal precoUnitario, int quantidade)
+        {
+            var produtoRepositorio = new ProdutoRepositorio();
+            produtoRepositorio.Editar(idProdutoEditar, nome, precoUnitario, quantidade);
         }
     }
 }

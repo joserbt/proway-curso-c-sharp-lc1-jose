@@ -24,9 +24,22 @@ namespace WindowsFormsExemplos.Repositorios
             comando.ExecuteNonQuery();
         }
 
-        public void Editar(string nome, decimal precoUnitario, int quantidade, int id)
+        public void Editar(int id, string nome, decimal precoUnitario, int quantidade)
         {
+            var bancoDadosConexao = new BancoDadosConexao();
+            var comando = bancoDadosConexao.Conectar();
 
+            comando.CommandText = @"UPDATE produtos SET
+nome = @NOME,
+preco_unitario = @PRECO_UNITARIO,
+quantidade = @QUANTIDADE
+WHERE id = @ID";
+            comando.Parameters.AddWithValue("@NOME", nome);
+            comando.Parameters.AddWithValue("@PRECO_UNITARIO", precoUnitario);
+            comando.Parameters.AddWithValue("@QUANTIDADE", quantidade);
+            comando.Parameters.AddWithValue("@ID", id);
+
+            comando.ExecuteNonQuery();
         }
 
         public void Apagar(int id)
@@ -41,7 +54,7 @@ namespace WindowsFormsExemplos.Repositorios
             comando.ExecuteNonQuery();
         }
 
-        public List<Produto> ObterTodos()
+        public List<Produto> ObterTodos(string pesquisa)
         {
             var produtos = new List<Produto>();
             //conexao
@@ -49,7 +62,8 @@ namespace WindowsFormsExemplos.Repositorios
             var comando = bancoDadosConexao.Conectar();
 
             //executar o comando do SELECT
-            comando.CommandText = "SELECT * FROM produtos";
+            comando.CommandText = "SELECT * FROM produtos WHERE nome LIKE @PESQUISA";
+            comando.Parameters.AddWithValue("@PESQUISA", $"%{pesquisa}%");
 
             //criar a tabela em memoria para carregar os registros da tabela de produtos
             var tabelaEmMemoria = new DataTable();

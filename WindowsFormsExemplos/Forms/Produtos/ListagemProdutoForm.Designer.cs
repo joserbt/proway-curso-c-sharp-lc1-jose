@@ -37,6 +37,8 @@
             buttonEditar = new Button();
             buttonApagar = new Button();
             buttonCadastrar = new Button();
+            textBoxPesquisa = new TextBox();
+            labelPesquisa = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -125,11 +127,30 @@
             buttonCadastrar.UseVisualStyleBackColor = true;
             buttonCadastrar.Click += buttonCadastrar_Click;
             // 
+            // textBoxPesquisa
+            // 
+            textBoxPesquisa.Location = new Point(77, 10);
+            textBoxPesquisa.Name = "textBoxPesquisa";
+            textBoxPesquisa.Size = new Size(380, 23);
+            textBoxPesquisa.TabIndex = 25;
+            textBoxPesquisa.KeyDown += textBoxPesquisa_KeyDown;
+            // 
+            // labelPesquisa
+            // 
+            labelPesquisa.AutoSize = true;
+            labelPesquisa.Location = new Point(18, 13);
+            labelPesquisa.Name = "labelPesquisa";
+            labelPesquisa.Size = new Size(53, 15);
+            labelPesquisa.TabIndex = 26;
+            labelPesquisa.Text = "Pesquisa";
+            // 
             // ListagemProdutoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(841, 370);
+            Controls.Add(labelPesquisa);
+            Controls.Add(textBoxPesquisa);
             Controls.Add(buttonCadastrar);
             Controls.Add(buttonEditar);
             Controls.Add(buttonApagar);
@@ -140,6 +161,7 @@
             Load += ListagemProdutoForm_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -153,5 +175,7 @@
         private DataGridViewTextBoxColumn ColumnPrecoUnitario;
         private DataGridViewTextBoxColumn ColumnPreço;
         private Button buttonCadastrar;
+        private TextBox textBoxPesquisa;
+        private Label labelPesquisa;
     }
 }

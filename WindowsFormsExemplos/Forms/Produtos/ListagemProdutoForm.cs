@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,7 @@ namespace WindowsFormsExemplos.Forms.Produtos
 
         private void buttonCadastrar_Click(object sender, EventArgs e)
         {
+
             var formulario = new CadastroProdutoForm();
             formulario.Text = "Cadatrar produto";
             formulario.ShowDialog();
@@ -32,8 +34,11 @@ namespace WindowsFormsExemplos.Forms.Produtos
 
         private void ListarProdutos()
         {
+            var pesquisa = textBoxPesquisa.Text.Trim();
+
+
             var produtoServico = new ProdutoServico();
-            var produtos = produtoServico.ObterTodos();
+            var produtos = produtoServico.ObterTodos(pesquisa);
 
             //remover todas as linhas do datagrid
             dataGridView1.Rows.Clear();
@@ -78,8 +83,24 @@ namespace WindowsFormsExemplos.Forms.Produtos
         {
             var linhaSelecionada = dataGridView1.SelectedRows[0];
             var id = Convert.ToInt32(linhaSelecionada.Cells[0].Value);
+
             var produtoServico = new ProdutoServico();
             var produtoEscolhido = produtoServico.ObterPorId(id);
+
+            var form = new CadastroProdutoForm(produtoEscolhido);
+            form.ShowDialog();
+
+            ListarProdutos();
+        }
+
+        private void textBoxPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            //quando o usuario apertar a tecla enter ira filtrar os produtos ( no banco)
+
+            if(e.KeyCode == Keys.Enter)
+            {
+                ListarProdutos();
+            }
         }
     }
 }

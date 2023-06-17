@@ -12,7 +12,7 @@ namespace WindowsFormsExemplos.BandoDados
         public SqlCommand Conectar()
         {
             var conexao = new SqlConnection();
-            conexao.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\73343\proway-curso-c-sharp-lc1-jose\WindowsFormsExemplos\BandoDados\WindowsFormsBancosDados.mdf;Integrated Security=True";
+            conexao.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\73343\source\repos\proway-curso-c-sharp-lc1-jose\WindowsFormsExemplos\BandoDados\WindowsFormsBancosDados.mdf;Integrated Security=True";
             conexao.Open();
 
             var comando = conexao.CreateCommand();
