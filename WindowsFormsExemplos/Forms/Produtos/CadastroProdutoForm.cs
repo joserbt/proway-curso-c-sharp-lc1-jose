@@ -3,21 +3,22 @@ using static WindowsFormsExemplos.Repositorios.ProdutoRepositorio;
 
 namespace WindowsFormsExemplos.Forms.Produtos
 {
+
     public partial class CadastroProdutoForm : Form
     {
-
+        private ProdutoServico produtoServico;
         private int idProdutoEditar = -1;
 
         //construtor é chamado qaundo é modo cadastro
         public CadastroProdutoForm()
         {
             InitializeComponent();
+            produtoServico = new ProdutoServico();
         }
 
         //construtor é chamado qaundo é modo editar
-        public CadastroProdutoForm(Produto produtoEscolhido)
+        public CadastroProdutoForm(Produto produtoEscolhido) : this()
         {
-            InitializeComponent();
             textBoxNome.Text = produtoEscolhido.Nome;
             textBoxPrecoUnitario.Text = produtoEscolhido.PrecoUnitario.ToString();
             textBoxQuantidade.Text = produtoEscolhido.Quantidade.ToString();
@@ -30,19 +31,24 @@ namespace WindowsFormsExemplos.Forms.Produtos
             var quantidade = Convert.ToInt32(textBoxQuantidade.Text);
             var precoUnitario = Convert.ToDecimal(textBoxPrecoUnitario.Text);
 
-            var produtoServico = new ProdutoServico();
+            var produto = new Produto();
 
-            if(idProdutoEditar == -1)
+            if (idProdutoEditar == -1)
             {
-                produtoServico.Cadastrar(nome, precoUnitario, quantidade);
+                produtoServico.Cadastrar(produto);
 
                 MessageBox.Show("produto cadastrado com sucesso");
             }
             else
             {
-                produtoServico.Editar(idProdutoEditar, nome, precoUnitario, quantidade);
+                produtoServico.Editar(produto);
                 MessageBox.Show("produto alterado com sucesso");
             }
+        }
+
+        private void CadastroProdutoForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

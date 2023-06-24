@@ -20,20 +20,20 @@ namespace WindowsFormsExemplos.Repositorios
             bancoDadosConexao = new BancoDadosConexao();
         }
 
-        public void Cadastrar(string nome, decimal precoUnitario, int quantidade)
+        public void Cadastrar(Produto produto)
         {
             var comando = bancoDadosConexao.Conectar();
 
             comando.CommandText = @"INSERT INTO produtos (nome, preco_unitario, quantidade) VALUES (@NOME, @PRECO_UNITARIO, @QUANTIDADE);";
 
-            comando.Parameters.AddWithValue("@NOME", nome);
-            comando.Parameters.AddWithValue("@PRECO_UNITARIO", precoUnitario);
-            comando.Parameters.AddWithValue("@QUANTIDADE", quantidade);
+            comando.Parameters.AddWithValue("@NOME", produto.Nome);
+            comando.Parameters.AddWithValue("@PRECO_UNITARIO", produto.PrecoUnitario);
+            comando.Parameters.AddWithValue("@QUANTIDADE", produto.Quantidade);
 
             comando.ExecuteNonQuery();
         }
 
-        public void Editar(int id, string nome, decimal precoUnitario, int quantidade)
+        public void Editar(Produto produto)
         {
             var comando = bancoDadosConexao.Conectar();
 
@@ -42,10 +42,10 @@ nome = @NOME,
 preco_unitario = @PRECO_UNITARIO,
 quantidade = @QUANTIDADE
 WHERE id = @ID";
-            comando.Parameters.AddWithValue("@NOME", nome);
-            comando.Parameters.AddWithValue("@PRECO_UNITARIO", precoUnitario);
-            comando.Parameters.AddWithValue("@QUANTIDADE", quantidade);
-            comando.Parameters.AddWithValue("@ID", id);
+            comando.Parameters.AddWithValue("@NOME", produto.Nome);
+            comando.Parameters.AddWithValue("@PRECO_UNITARIO", produto.PrecoUnitario);
+            comando.Parameters.AddWithValue("@QUANTIDADE", produto.Quantidade);
+            comando.Parameters.AddWithValue("@ID", produto.Id);
 
             comando.ExecuteNonQuery();
         }
@@ -79,14 +79,7 @@ WHERE id = @ID";
                 //obter o registro (consultado da tabela de produtos) da tabela em memoria
                 var registro = tabelaEmMemoria.Rows[i];
 
-                //intanciar um pbjeto de calsse produto
-                var produto = new Produto();
-
-                //preencher as propriedades do objetos do produto
-                produto.Id = Convert.ToInt32(registro["id"]);
-                produto.Nome = registro["nome"].ToString();
-                produto.Quantidade = Convert.ToInt32(registro["quantidade"]);
-                produto.PrecoUnitario = Convert.ToDecimal(registro["preco_unitario"]);
+                var produto = ConstruirProdutoDoRegistro(registro);
 
                 //adicionar o produto na lista de produtos
                 produtos.Add(produto);
@@ -111,7 +104,8 @@ WHERE id = @ID";
 
             //pegar o primeiro registro da consulta
             var linha = tabelaEmMemoria.Rows[0];
-            Produto produto = ConstruirProdutoDoRegistro(linha);
+
+            var produto = ConstruirProdutoDoRegistro(linha);
 
             //retornar o objeto do produto preenchido com os dados do registro consultado
             return produto;
@@ -127,6 +121,7 @@ WHERE id = @ID";
             produto.Nome = linha["nome"].ToString();
             produto.Quantidade = Convert.ToInt32(linha["quantidade"]);
             produto.PrecoUnitario = Convert.ToDecimal(linha["preco_unitario"]);
+
             return produto;
         }
 
