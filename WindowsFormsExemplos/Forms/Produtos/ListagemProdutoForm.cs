@@ -14,9 +14,13 @@ namespace WindowsFormsExemplos.Forms.Produtos
 {
     public partial class ListagemProdutoForm : Form
     {
+
+        private ProdutoServico produtoServico;
         public ListagemProdutoForm()
         {
             InitializeComponent();
+
+            produtoServico = new ProdutoServico();
         }
 
         private void buttonCadastrar_Click(object sender, EventArgs e)
@@ -30,14 +34,13 @@ namespace WindowsFormsExemplos.Forms.Produtos
         private void ListagemProdutoForm_Load(object sender, EventArgs e)
         {
             ListarProdutos();
+
         }
 
         private void ListarProdutos()
         {
             var pesquisa = textBoxPesquisa.Text.Trim();
 
-
-            var produtoServico = new ProdutoServico();
             var produtos = produtoServico.ObterTodos(pesquisa);
 
             //remover todas as linhas do datagrid
@@ -68,9 +71,6 @@ namespace WindowsFormsExemplos.Forms.Produtos
             //obter o valor da primeira coluna (codito == id) da linha selcionada
             var id = Convert.ToInt32(linhaSelecioanada.Cells[0].Value);
 
-            //instaciando um objeto de classe ProdutoServico
-            var produtoServico = new ProdutoServico();
-
             //chamar método que ira realizar o delete
             produtoServico.Apagar(id);
 
@@ -84,7 +84,6 @@ namespace WindowsFormsExemplos.Forms.Produtos
             var linhaSelecionada = dataGridView1.SelectedRows[0];
             var id = Convert.ToInt32(linhaSelecionada.Cells[0].Value);
 
-            var produtoServico = new ProdutoServico();
             var produtoEscolhido = produtoServico.ObterPorId(id);
 
             var form = new CadastroProdutoForm(produtoEscolhido);

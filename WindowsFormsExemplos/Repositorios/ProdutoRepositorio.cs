@@ -10,9 +10,18 @@ namespace WindowsFormsExemplos.Repositorios
 {
     public class ProdutoRepositorio
     {
+
+        private BancoDadosConexao bancoDadosConexao;
+
+        //construtor é executado quando ocorre um new da classe, ou seja,
+        //new ProdutoRepositorio() irá executar o construtar
+        public ProdutoRepositorio()
+        {
+            bancoDadosConexao = new BancoDadosConexao();
+        }
+
         public void Cadastrar(string nome, decimal precoUnitario, int quantidade)
         {
-            var bancoDadosConexao = new BancoDadosConexao();
             var comando = bancoDadosConexao.Conectar();
 
             comando.CommandText = @"INSERT INTO produtos (nome, preco_unitario, quantidade) VALUES (@NOME, @PRECO_UNITARIO, @QUANTIDADE);";
@@ -26,7 +35,6 @@ namespace WindowsFormsExemplos.Repositorios
 
         public void Editar(int id, string nome, decimal precoUnitario, int quantidade)
         {
-            var bancoDadosConexao = new BancoDadosConexao();
             var comando = bancoDadosConexao.Conectar();
 
             comando.CommandText = @"UPDATE produtos SET
@@ -44,8 +52,6 @@ WHERE id = @ID";
 
         public void Apagar(int id)
         {
-            //abrir a conexao
-            var bancoDadosConexao = new BancoDadosConexao();
             var comando = bancoDadosConexao.Conectar();
             //definir o comando
             comando.CommandText = "DELETE FROM produtos WHERE id = @ID";
@@ -57,8 +63,6 @@ WHERE id = @ID";
         public List<Produto> ObterTodos(string pesquisa)
         {
             var produtos = new List<Produto>();
-            //conexao
-            var bancoDadosConexao = new BancoDadosConexao();
             var comando = bancoDadosConexao.Conectar();
 
             //executar o comando do SELECT
@@ -107,16 +111,22 @@ WHERE id = @ID";
 
             //pegar o primeiro registro da consulta
             var linha = tabelaEmMemoria.Rows[0];
+            Produto produto = ConstruirProdutoDoRegistro(linha);
+
+            //retornar o objeto do produto preenchido com os dados do registro consultado
+            return produto;
+        }
+
+        private static Produto ConstruirProdutoDoRegistro(DataRow linha)
+        {
 
             //instaciar o objeto de produto
             var produto = new Produto();
 
-            produto.Id= Convert.ToInt32(linha["id"]);
+            produto.Id = Convert.ToInt32(linha["id"]);
             produto.Nome = linha["nome"].ToString();
             produto.Quantidade = Convert.ToInt32(linha["quantidade"]);
             produto.PrecoUnitario = Convert.ToDecimal(linha["preco_unitario"]);
-
-            //retornar o objeto do produto preenchido com os dados do registro consultado
             return produto;
         }
 
