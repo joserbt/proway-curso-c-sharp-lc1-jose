@@ -88,6 +88,8 @@ namespace WindowsFormsExemplos.Forms.Clientes
             cliente.Endereco.Complemento = complemento;
 
             clienteServico.Cadastrar(cliente);
+
+            MessageBox.Show("cliente cadastrado com sucesso");
         }
     }
 }
