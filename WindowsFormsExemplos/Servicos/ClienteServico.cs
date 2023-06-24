@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using WindowsFormsExemplos.Forms.Modelos;
+using WindowsFormsExemplos.Repositorios;
 
 namespace WindowsFormsExemplos.Servicos
 {
     internal class ClienteServico
     {
+        private ClienteRepositorio repositorio;
+
+        public ClienteServico()
+        {
+            repositorio = new ClienteRepositorio();
+        }
+
+        public void Cadastrar(Cliente cliente)
+        {
+            repositorio.Cadastrar(cliente);
+        }
     }
 }
