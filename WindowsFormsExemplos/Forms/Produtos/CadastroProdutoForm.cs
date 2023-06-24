@@ -32,6 +32,9 @@ namespace WindowsFormsExemplos.Forms.Produtos
             var precoUnitario = Convert.ToDecimal(textBoxPrecoUnitario.Text);
 
             var produto = new Produto();
+            produto.Nome = nome;
+            produto.Quantidade = quantidade;
+            produto.PrecoUnitario = precoUnitario;
 
             if (idProdutoEditar == -1)
             {
@@ -41,6 +44,7 @@ namespace WindowsFormsExemplos.Forms.Produtos
             }
             else
             {
+                produto.Id = idProdutoEditar;
                 produtoServico.Editar(produto);
                 MessageBox.Show("produto alterado com sucesso");
             }
