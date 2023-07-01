@@ -32,6 +32,7 @@ namespace WindowsFormsExemplos.Forms.Clientes
         {
             var clientes = clienteServico.ObterTodos();
 
+
             dataGridView1.Rows.Clear();
 
             foreach(var cliente in clientes)

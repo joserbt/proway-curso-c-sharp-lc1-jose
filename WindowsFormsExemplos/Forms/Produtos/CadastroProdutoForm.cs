@@ -1,4 +1,5 @@
-﻿using WindowsFormsExemplos.Servicos;
+﻿using WindowsFormsExemplos.Forms.Modelos;
+using WindowsFormsExemplos.Servicos;
 using static WindowsFormsExemplos.Repositorios.ProdutoRepositorio;
 
 namespace WindowsFormsExemplos.Forms.Produtos

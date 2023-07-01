@@ -34,6 +34,7 @@
             this.buttonCadastroSimplificadoBancoDados = new System.Windows.Forms.Button();
             this.buttonListaDeProdutos = new System.Windows.Forms.Button();
             this.buttonListaClientes = new System.Windows.Forms.Button();
+            this.buttonListaPedidos = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonFolhaPagamento
@@ -93,11 +94,22 @@
             this.buttonListaClientes.UseVisualStyleBackColor = true;
             this.buttonListaClientes.Click += new System.EventHandler(this.buttonListaClientes_Click);
             // 
+            // buttonListaPedidos
+            // 
+            this.buttonListaPedidos.Location = new System.Drawing.Point(287, 456);
+            this.buttonListaPedidos.Name = "buttonListaPedidos";
+            this.buttonListaPedidos.Size = new System.Drawing.Size(297, 45);
+            this.buttonListaPedidos.TabIndex = 6;
+            this.buttonListaPedidos.Text = "Lista de pedidos";
+            this.buttonListaPedidos.UseVisualStyleBackColor = true;
+            this.buttonListaPedidos.Click += new System.EventHandler(this.buttonListaPedidos_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 600);
+            this.Controls.Add(this.buttonListaPedidos);
             this.Controls.Add(this.buttonListaClientes);
             this.Controls.Add(this.buttonListaDeProdutos);
             this.Controls.Add(this.buttonCadastroSimplificadoBancoDados);
@@ -120,5 +132,6 @@
         private Button buttonCadastroSimplificadoBancoDados;
         private Button buttonListaDeProdutos;
         private Button buttonListaClientes;
+        private Button buttonListaPedidos;
     }
 }
