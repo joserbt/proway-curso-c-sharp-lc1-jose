@@ -1,5 +1,7 @@
-﻿using WindowsFormsExemplos.BandoDados;
+﻿using System.Data;
+using WindowsFormsExemplos.BandoDados;
 using WindowsFormsExemplos.Forms.Modelos;
+using WindowsFormsExemplos.Servicos;
 
 namespace WindowsFormsExemplos.Repositorios
 {
@@ -34,6 +36,43 @@ namespace WindowsFormsExemplos.Repositorios
             comando.Parameters.AddWithValue("@COMPLEMENTO", cliente.Endereco.Complemento);
             
             comando.ExecuteNonQuery();
+        }
+
+        public List<Cliente> ObterTodos()
+        {
+            var bancoDadosConexao = new BancoDadosConexao();
+            var comando = bancoDadosConexao.Conectar();
+            comando.CommandText = "SELECT * FROM clientes";
+
+            var tabelaEmMemoria = new DataTable();
+            tabelaEmMemoria.Load(comando.ExecuteReader());
+
+            var clientes = new List<Cliente>();
+                                                            //for (var i = 0; i < tabelaEmMemoria.Rows.Count; i++)
+                                                            //{
+                                                            //    //obter da lista de registros um registro de determinada posição
+                                                            //    var registro = tabelaEmMemoria.Rows[i];
+                                                            //}
+            
+            foreach(DataRow registro in tabelaEmMemoria.Rows)
+            {
+                var cliente = new Cliente();
+                cliente.Id = Convert.ToInt32(registro["id"]);
+                cliente.Nome = registro["nome"].ToString();
+                cliente.Cpf = registro["cpf"].ToString();
+                cliente.DataNascimento = Convert.ToDateTime(registro["data_nascimento"]);
+
+                cliente.Endereco = new Endereco();
+                cliente.Endereco.Cep = registro["cep"].ToString();
+                cliente.Endereco.Numero = registro["numero"].ToString();
+                cliente.Endereco.Estado = registro["estado"].ToString();
+                cliente.Endereco.Cidade = registro["cidade"].ToString();
+                cliente.Endereco.Bairro = registro["bairro"].ToString();
+                cliente.Endereco.Complemento = registro["complemento"].ToString();
+
+                clientes.Add(cliente);
+            }
+            return clientes;
         }
     }
 }

@@ -28,12 +28,86 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ColumnCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCpf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonCadastrar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColumnCodigo,
+            this.ColumnNome,
+            this.ColumnCpf});
+            this.dataGridView1.Location = new System.Drawing.Point(12, 47);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(776, 391);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // ColumnCodigo
+            // 
+            this.ColumnCodigo.HeaderText = "Código";
+            this.ColumnCodigo.MinimumWidth = 6;
+            this.ColumnCodigo.Name = "ColumnCodigo";
+            this.ColumnCodigo.ReadOnly = true;
+            this.ColumnCodigo.Width = 125;
+            // 
+            // ColumnNome
+            // 
+            this.ColumnNome.HeaderText = "Nome";
+            this.ColumnNome.MinimumWidth = 6;
+            this.ColumnNome.Name = "ColumnNome";
+            this.ColumnNome.ReadOnly = true;
+            this.ColumnNome.Width = 125;
+            // 
+            // ColumnCpf
+            // 
+            this.ColumnCpf.HeaderText = "CPF";
+            this.ColumnCpf.MinimumWidth = 6;
+            this.ColumnCpf.Name = "ColumnCpf";
+            this.ColumnCpf.ReadOnly = true;
+            this.ColumnCpf.Width = 125;
+            // 
+            // buttonCadastrar
+            // 
+            this.buttonCadastrar.Location = new System.Drawing.Point(694, 12);
+            this.buttonCadastrar.Name = "buttonCadastrar";
+            this.buttonCadastrar.Size = new System.Drawing.Size(94, 29);
+            this.buttonCadastrar.TabIndex = 1;
+            this.buttonCadastrar.Text = "Cadastrar";
+            this.buttonCadastrar.UseVisualStyleBackColor = true;
+            this.buttonCadastrar.Click += new System.EventHandler(this.buttonCadastrar_Click);
+            // 
+            // ListagemClienteForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonCadastrar);
+            this.Controls.Add(this.dataGridView1);
+            this.Name = "ListagemClienteForm";
             this.Text = "ListagemCliente";
+            this.Load += new System.EventHandler(this.ListagemClienteForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn ColumnCodigo;
+        private DataGridViewTextBoxColumn ColumnNome;
+        private DataGridViewTextBoxColumn ColumnCpf;
+        private Button buttonCadastrar;
     }
 }
