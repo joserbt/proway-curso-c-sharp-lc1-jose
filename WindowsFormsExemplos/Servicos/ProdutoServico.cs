@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WindowsFormsExemplos.Forms.Modelos;
 using WindowsFormsExemplos.Repositorios;
 using static WindowsFormsExemplos.Repositorios.ProdutoRepositorio;
 

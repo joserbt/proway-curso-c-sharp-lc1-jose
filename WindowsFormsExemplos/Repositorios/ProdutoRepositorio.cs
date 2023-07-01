@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsExemplos.BandoDados;
+using WindowsFormsExemplos.Forms.Modelos;
 
 namespace WindowsFormsExemplos.Repositorios
 {
@@ -123,17 +124,6 @@ WHERE id = @ID";
             produto.PrecoUnitario = Convert.ToDecimal(linha["preco_unitario"]);
 
             return produto;
-        }
-
-        public class Produto
-        {
-            public int Id { get; set; }
-
-            public string Nome { get; set; }
-
-            public decimal PrecoUnitario { get; set; }
-
-            public int Quantidade { get; set; }
         }
     }
 }

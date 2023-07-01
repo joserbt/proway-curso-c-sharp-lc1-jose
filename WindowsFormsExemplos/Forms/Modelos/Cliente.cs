@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsExemplos.Forms.Modelos
 {
-    internal class Cliente
+    internal class Cliente : ModeloBase
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public string Cpf { get; set; }
         public DateTime DataNascimento { get; set; }
